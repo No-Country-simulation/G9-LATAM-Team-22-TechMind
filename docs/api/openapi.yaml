@@ -1,0 +1,250 @@
+openapi: 3.0.3
+info:
+  title: API de Organización Inteligente de Contenido Técnico
+  description: >
+    API que recibe textos técnicos (documentación, tutoriales, materiales de
+    estudio) y utiliza un modelo de Ciencia de Datos para clasificarlos por
+    categoría y extraer información adicional relevante (tags/keywords).
+  version: "1.0"
+  contact:
+    name: Equipo Backend
+servers:
+  - url: /api/v1
+    description: Versión 1 de la API
+
+tags:
+  - name: Contenido
+    description: Clasificación y análisis de contenido técnico
+  - name: Salud
+    description: Verificación del estado del servicio
+
+paths:
+  /contenido:
+    post:
+      tags:
+        - Contenido
+      summary: Analiza un texto técnico y devuelve su categoría e información adicional
+      description: >
+        Recibe un texto técnico (con título opcional) y lo procesa mediante
+        el modelo de clasificación desarrollado por el equipo de Ciencia de
+        Datos. Devuelve la categoría más probable, la probabilidad asociada
+        y un listado de información adicional relevante (tecnologías,
+        conceptos clave, etc.). No crea ni persiste ningún recurso.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContenidoRequest'
+            examples:
+              ejemplo_backend:
+                summary: Texto sobre Spring Boot (Backend)
+                value:
+                  titulo: "Introducción a Spring Boot"
+                  texto: "En este contenido se presentan los conceptos básicos para la creación de APIs REST utilizando Java y Spring Boot."
+              ejemplo_base_datos:
+                summary: Texto sobre bases de datos, sin título
+                value:
+                  texto: "Este material explica cómo modelar relaciones uno a muchos y muchos a muchos en bases de datos relacionales usando PostgreSQL."
+              ejemplo_devops:
+                summary: Texto sobre DevOps y contenedores
+                value:
+                  titulo: "Contenerización de aplicaciones"
+                  texto: "Se explican los fundamentos de Docker, la creación de imágenes, y el uso de Docker Compose para orquestar múltiples servicios en desarrollo."
+      responses:
+        '200':
+          description: Análisis realizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContenidoResponse'
+              examples:
+                ejemplo_backend:
+                  summary: Resultado para texto de Spring Boot
+                  value:
+                    categoria: "Backend"
+                    probabilidad: 0.89
+                    informacion_adicional: ["Java", "Spring Boot", "API REST"]
+                ejemplo_sin_tags:
+                  summary: Resultado sin información adicional detectada
+                  value:
+                    categoria: "General"
+                    probabilidad: 0.42
+                    informacion_adicional: []
+        '400':
+          description: Error de validación en los datos de entrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                texto_vacio:
+                  summary: Texto vacío o ausente
+                  value:
+                    error:
+                      codigo: "TEXTO_VACIO"
+                      mensaje: "El campo 'texto' no puede estar vacío o contener solo espacios en blanco."
+                      campo: "texto"
+                      timestamp: "2026-07-20T15:32:10Z"
+                texto_muy_largo:
+                  summary: Texto excede longitud máxima
+                  value:
+                    error:
+                      codigo: "TEXTO_MUY_LARGO"
+                      mensaje: "El campo 'texto' excede la longitud máxima permitida de 5000 caracteres."
+                      campo: "texto"
+                      timestamp: "2026-07-20T15:33:00Z"
+        '500':
+          description: Error interno del servidor o del modelo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                error_modelo:
+                  summary: El modelo no respondió correctamente
+                  value:
+                    error:
+                      codigo: "ERROR_MODELO"
+                      mensaje: "No fue posible obtener una respuesta del modelo de clasificación."
+                      campo: null
+                      timestamp: "2026-07-20T15:34:12Z"
+
+  /health:
+    get:
+      tags:
+        - Salud
+      summary: Verifica el estado del servicio y del modelo
+      description: >
+        Permite comprobar si la API está en ejecución y si el modelo de
+        clasificación se cargó correctamente en memoria.
+      responses:
+        '200':
+          description: El servicio y el modelo están operativos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              example:
+                status: "ok"
+                modelo_cargado: true
+                version: "1.0"
+        '503':
+          description: El servicio está en ejecución pero el modelo no está disponible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              example:
+                status: "error"
+                modelo_cargado: false
+                version: "1.0"
+
+components:
+  schemas:
+    ContenidoRequest:
+      type: object
+      required:
+        - texto
+      properties:
+        titulo:
+          type: string
+          maxLength: 200
+          description: Título del contenido. Opcional.
+          example: "Introducción a Spring Boot"
+        texto:
+          type: string
+          minLength: 10
+          maxLength: 5000
+          description: >
+            Texto técnico a analizar. Obligatorio. El límite de longitud es
+            un valor por defecto sujeto a ajuste según los requisitos del
+            modelo del equipo de Ciencia de Datos.
+          example: "En este contenido se presentan los conceptos básicos para la creación de APIs REST utilizando Java y Spring Boot."
+
+    ContenidoResponse:
+      type: object
+      required:
+        - categoria
+        - probabilidad
+        - informacion_adicional
+      properties:
+        categoria:
+          type: string
+          description: Categoría principal identificada por el modelo.
+          example: "Backend"
+        probabilidad:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Nivel de confianza del modelo para la categoría devuelta.
+          example: 0.89
+        informacion_adicional:
+          type: array
+          description: >
+            Lista de tecnologías, conceptos o palabras clave relevantes
+            identificadas en el texto. Puede venir vacía en casos donde el
+            modelo no detecte información adicional relevante.
+          items:
+            type: string
+          example: ["Java", "Spring Boot", "API REST"]
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - modelo_cargado
+        - version
+      properties:
+        status:
+          type: string
+          enum: [ok, error]
+          description: Estado general del servicio.
+        modelo_cargado:
+          type: boolean
+          description: Indica si el modelo de clasificación está cargado en memoria.
+        version:
+          type: string
+          description: Versión actual del contrato/API.
+          example: "1.0"
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - codigo
+            - mensaje
+            - timestamp
+          properties:
+            codigo:
+              type: string
+              description: Código de error estable, legible por máquina.
+              enum:
+                - TEXTO_VACIO
+                - TEXTO_MUY_LARGO
+                - TITULO_MUY_LARGO
+                - ERROR_MODELO
+                - RESPUESTA_MODELO_INVALIDA
+              example: "TEXTO_VACIO"
+            mensaje:
+              type: string
+              description: Mensaje legible por humanos que explica el error.
+              example: "El campo 'texto' no puede estar vacío o contener solo espacios en blanco."
+            campo:
+              type: string
+              nullable: true
+              description: >
+                Campo del request que causó el error. Null cuando el error
+                es interno del servidor/modelo (no atribuible a un campo
+                de entrada).
+              example: "texto"
+            timestamp:
+              type: string
+              format: date-time
+              description: Fecha y hora del error en formato ISO 8601.
+              example: "2026-07-20T15:32:10Z"
