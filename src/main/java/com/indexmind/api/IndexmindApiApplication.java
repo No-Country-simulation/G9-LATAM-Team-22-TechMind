@@ -1,13 +1,13 @@
-package com.techmind.api;
+package com.indexmind.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TechmindApiApplication {
+public class IndexmindApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TechmindApiApplication.class, args);
+		SpringApplication.run(IndexmindApiApplication.class, args);
 	}
 
 }

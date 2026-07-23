@@ -8,10 +8,10 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.techmind</groupId>
-    <artifactId>techmaind-api</artifactId>
+    <groupId>com.indexmind</groupId>
+    <artifactId>indexmind-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>techmind-api</name>
+    <name>indexmind-api</name>
     <description>API REST para la Organización Inteligente del Conocimiento Técnico</description>
 
     <properties>

@@ -1,10 +1,10 @@
-package com.techmind.api;
+package com.indexmind.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TechmindApiApplicationTests {
+class IndexmindApiApplicationTests {
 
 	@Test
 	void contextLoads() {
