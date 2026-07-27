@@ -10,7 +10,7 @@ public record HealthResponse(
     public enum Status{
         @JsonProperty("ok")
         OK,
-        @JsonProperty("ok")
+        @JsonProperty("error")
         ERROR
     }
 }
