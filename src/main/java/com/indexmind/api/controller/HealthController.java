@@ -14,7 +14,7 @@ public class HealthController {
     @Autowired
     private ContenidoService service;
     @GetMapping("/health")
-    public ResponseEntity<HealthResponse> disnibilidad () {
+    public ResponseEntity<HealthResponse> disponibilidad () {
         boolean cargado = service.modeloDisponible();
         var status = cargado ? HealthResponse.Status.OK : HealthResponse.Status.ERROR;
         var response = new HealthResponse(status, cargado, "1.0");
