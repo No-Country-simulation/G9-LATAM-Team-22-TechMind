@@ -2,6 +2,7 @@ package com.indexmind.api.service;
 
 import com.indexmind.api.dto.ContenidoRequest;
 import com.indexmind.api.dto.ContenidoResponse;
+import com.indexmind.api.dto.HealthResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class ContenidoServiceMock implements ContenidoService {
     }
 
     @Override
-    public Boolean modeloDisponible() {
+    public boolean modeloDisponible() {
         return true;
     }
 }
