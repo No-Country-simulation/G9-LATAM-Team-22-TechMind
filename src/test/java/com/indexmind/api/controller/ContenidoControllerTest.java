@@ -52,4 +52,40 @@ class ContenidoControllerTest {
                 .andExpect(jsonPath("$.probabilidad").value(0.89))
                 .andExpect(jsonPath("$.informacion_adicional[0]").value("Java"));
     }
+
+    @Test
+    void textoVacioDevuelve400ConCodigoTextoVacio() throws Exception {
+        var request = new ContenidoRequest("Titulo valido", "");
+
+        mockMvc.perform(post("/api/v1/contenido")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(request)))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error.codigo").value("TEXTO_VACIO"))
+        .andExpect(jsonPath("$.error.campo").value("texto"));
+    }
+
+    @Test
+    void textoMuyLargoDevuelve400() throws Exception {
+        var request = new ContenidoRequest("Titulo valido", "a".repeat(5001));
+
+        mockMvc.perform(post("/api/v1/contenido")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error.codigo").value("TEXTO_MUY_LARGO"))
+        .andExpect(jsonPath("$.error.campo").value("texto"));
+    }
+
+    @Test
+    void tituloMuyLargoDevuelve400() throws Exception {
+        var request = new ContenidoRequest("a".repeat(201), "Este es un texto válido para clasificar contenido en el backend.");
+
+        mockMvc.perform(post("/api/v1/contenido")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error.codigo").value("TITULO_MUY_LARGO"))
+        .andExpect(jsonPath("$.error.campo").value("titulo"));
+    }
 }
