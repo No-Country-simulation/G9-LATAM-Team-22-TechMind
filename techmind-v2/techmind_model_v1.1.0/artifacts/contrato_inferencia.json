@@ -1,0 +1,53 @@
+{
+    "nombre": "TechMind Inference Interface",
+    "version": "1.0.0",
+    "descripcion": "Interfaz para clasificar contenido tecnológico en backend, cloud, datascience y frontend.",
+    "entrada": {
+        "formatos_admitidos": [
+            "str",
+            "list[str]",
+            "tuple[str]",
+            "pandas.Series",
+            "numpy.ndarray unidimensional"
+        ],
+        "max_documentos_lote": 500,
+        "max_caracteres_documento": 50000,
+        "ejemplo": {
+            "textos": [
+                "python pandas machine learning predictive model"
+            ],
+            "incluir_explicacion": false
+        }
+    },
+    "salida": {
+        "campos_principales": [
+            "Estado",
+            "Categoria_predicha",
+            "Segunda_categoria",
+            "Margen_decision",
+            "Nivel_margen",
+            "Terminos_activos",
+            "Accion_recomendada",
+            "Requiere_revision",
+            "Prediccion_utilizable",
+            "Ranking_categorias"
+        ],
+        "estados_posibles": [
+            "aceptada",
+            "revision",
+            "rechazada"
+        ],
+        "categorias": [
+            "backend",
+            "cloud",
+            "datascience",
+            "frontend"
+        ]
+    },
+    "reglas_de_seguridad": [
+        "Las entradas vacías o de tipo incorrecto son rechazadas.",
+        "Los textos sin términos reconocidos no reciben una categoría.",
+        "El margen no debe mostrarse como probabilidad.",
+        "Las predicciones con margen bajo se envían a revisión."
+    ]
+}

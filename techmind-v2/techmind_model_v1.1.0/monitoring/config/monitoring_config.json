@@ -1,0 +1,48 @@
+{
+    "monitoring_version": "1.0.0",
+    "package_version": "1.0.0",
+    "api_version": "1.0.0",
+    "model_name": "TF-IDF + SGDClassifier optimizado",
+    "model_sha256": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb",
+    "classes": [
+        "backend",
+        "cloud",
+        "datascience",
+        "frontend"
+    ],
+    "thresholds": {
+        "warning_review_rate": 0.25,
+        "critical_review_rate": 0.4,
+        "warning_rejection_rate": 0.05,
+        "critical_rejection_rate": 0.15,
+        "warning_oov_rate": 0.03,
+        "critical_oov_rate": 0.1,
+        "warning_low_margin_rate": 0.25,
+        "critical_low_margin_rate": 0.4,
+        "warning_category_jsd": 0.1,
+        "critical_category_jsd": 0.2,
+        "warning_status_jsd": 0.1,
+        "critical_status_jsd": 0.2,
+        "warning_psi": 0.1,
+        "critical_psi": 0.25,
+        "minimum_batch_size_for_drift": 30
+    },
+    "interpretation": {
+        "psi": {
+            "stable": "< 0.10",
+            "warning": "0.10 a 0.25",
+            "critical": ">= 0.25"
+        },
+        "jensen_shannon": {
+            "stable": "< 0.10",
+            "warning": "0.10 a 0.20",
+            "critical": ">= 0.20"
+        }
+    },
+    "limitations": [
+        "Las señales estadísticas no demuestran por sí solas degradación del rendimiento.",
+        "La evaluación real requiere etiquetas posteriores y métricas supervisadas.",
+        "Los umbrales deben validarse con datos reales de producción."
+    ],
+    "generated_at": "2026-08-06T03:10:40+00:00"
+}

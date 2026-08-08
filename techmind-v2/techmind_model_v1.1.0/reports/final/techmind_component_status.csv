@@ -1,0 +1,17 @@
+﻿Componente,Estado,Tipo_validacion,Observación
+Preparación de datos,True,Técnica,"Dataset final sin vacíos, nulos, duplicados ni conflictos."
+Balance de clases,True,Técnica,Ratio de balance: 0.946
+Modelo base,True,Validación cruzada,TF-IDF + Regresión Logística.
+Selección de variante textual,True,Validación cruzada,texto_combinado_ponderado.
+Optimización,True,GridSearchCV,SGDClassifier optimizado.
+Evaluación final,True,Test reservado,F1 Macro Test: 0.8401
+Explicabilidad global,True,Coeficientes,Importancia global por categoría.
+Explicabilidad local,True,Contribuciones locales,Explicaciones individuales disponibles.
+Análisis de incertidumbre,True,Margen de decisión,Cola de revisión operativa.
+Análisis de errores,True,Matriz de confusión,Confusiones frecuentes auditadas.
+Pruebas de robustez,True,Perturbaciones,"Casos cortos, OOV y multitemáticos."
+Interfaz de inferencia,True,Pruebas funcionales,Inferencia individual y por lotes.
+Paquete Python,True,Smoke test independiente,"Carga, predicción, OOV y explicación."
+API REST,True,TestClient y subproceso,FastAPI con documentación OpenAPI.
+Contenedorización,True,Estática,Docker runtime: not_available.
+Monitoreo,True,Lotes simulados,"PSI, Jensen-Shannon y alertas."

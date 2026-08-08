@@ -1,0 +1,11 @@
+﻿Prioridad,Horizonte,Recomendación,Resultado_esperado
+1,Corto plazo,Construir y ejecutar la imagen Docker en un entorno con Docker Engine disponible.,"Validación real del build, health check y endpoint predict."
+2,Corto plazo,"Añadir autenticación, HTTPS, límites de solicitudes y gestión externa de secretos.",API preparada para un entorno controlado de producción.
+3,Corto plazo,Revisar manualmente los errores de backend y las confusiones más frecuentes.,Mejora del desempeño de la categoría más difícil.
+4,Mediano plazo,Recolectar ejemplos reales de producción y crear un conjunto de evaluación temporal.,Medición de deriva y calidad fuera del conjunto original.
+5,Mediano plazo,Calibrar los scores del clasificador mediante CalibratedClassifierCV.,Valores interpretables como probabilidades aproximadas.
+6,Mediano plazo,Ajustar los umbrales de revisión y alerta usando datos reales.,Menos falsos positivos en el monitoreo.
+7,Mediano plazo,Implementar anonimización y una política de retención para los registros operativos.,Reducción de riesgos de privacidad.
+8,Largo plazo,Comparar el modelo TF-IDF con embeddings o modelos transformer ligeros.,Mayor cobertura semántica para textos nuevos.
+9,Largo plazo,Evaluar clasificación multietiqueta para textos que pertenezcan a varias áreas.,Mejor representación de contenido multitemático.
+10,Largo plazo,"Automatizar reentrenamiento, pruebas y versionado mediante CI/CD.",Ciclo de vida reproducible y auditable.

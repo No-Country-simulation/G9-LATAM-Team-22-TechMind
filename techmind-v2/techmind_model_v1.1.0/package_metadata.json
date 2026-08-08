@@ -1,0 +1,67 @@
+{
+  "package_name": "TechMind Model Package",
+  "package_version": "1.1.0",
+  "model_version": "1.1.0",
+  "interface_version": "1.0.0",
+  "model_name": "TF-IDF Word + Char 3-6 + SGDClassifier optimizado",
+  "architecture": {
+    "features": {
+      "word_tfidf": 30000,
+      "char_tfidf": 30000,
+      "char_ngram_range": [
+        3,
+        6
+      ],
+      "total_features": 60000
+    },
+    "classifier": "SGDClassifier"
+  },
+  "classes": [
+    "backend",
+    "cloud",
+    "datascience",
+    "frontend"
+  ],
+  "model_sha256": "756b2577e731336ead95852ee1d8d752408762478a23d0bbf42cc9537e136ff6",
+  "evaluation": {
+    "f1_macro_cv": 0.8493,
+    "f1_macro_test": 0.8441,
+    "accuracy_test": 0.843,
+    "precision_macro_test": 0.8455,
+    "recall_macro_test": 0.8434,
+    "f1_weighted_test": 0.8435,
+    "accepted_accuracy": 0.9508,
+    "review_reject_rate": 0.2683,
+    "error_capture_rate": 0.7708,
+    "external_cases_correct": "9/9",
+    "external_cases_without_coverage": 0
+  },
+  "operational_policy": {
+    "review_margin": 0.64346894252355,
+    "few_features_threshold": 178,
+    "coverage_definition": "word_features + char_features",
+    "margin_is_probability": false
+  },
+  "api": {
+    "framework": "FastAPI",
+    "interface_version": "1.0.0",
+    "backward_compatible_with": "1.0.0",
+    "endpoints": [
+      "/",
+      "/health",
+      "/model-info",
+      "/predict",
+      "/docs",
+      "/redoc",
+      "/openapi.json"
+    ]
+  },
+  "validation": {
+    "model_approved": true,
+    "artifact_reproducible": true,
+    "sha256_verified": true,
+    "api_smoke_test": true,
+    "backend_regression_test": true
+  },
+  "generated_at_utc": "2026-08-07T22:55:37+00:00"
+}

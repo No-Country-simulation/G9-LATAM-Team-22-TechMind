@@ -1,0 +1,219 @@
+{
+    "project": {
+        "name": "TechMind",
+        "version": "2.0",
+        "package_version": "1.0.0",
+        "final_report_version": "1.0.0",
+        "objective": "Clasificación automática de contenido tecnológico en backend, cloud, datascience y frontend."
+    },
+    "data": {
+        "original_records": 5000,
+        "final_records": 4583,
+        "retained_rate": 0.9166,
+        "train_records": 3666,
+        "test_records": 917,
+        "classes": [
+            "backend",
+            "cloud",
+            "datascience",
+            "frontend"
+        ],
+        "class_balance_ratio": 0.946,
+        "numeric_features_generated": 21,
+        "numeric_features_used": 19,
+        "text_variants_evaluated": 4
+    },
+    "model": {
+        "selected_model": "TF-IDF + SGDClassifier optimizado",
+        "selected_text_variant": "texto_combinado_ponderado",
+        "tfidf_features": 30000,
+        "metrics": {
+            "accuracy_test": 0.8386041439476554,
+            "precision_macro_test": 0.8444900965351991,
+            "recall_macro_test": 0.838527469829268,
+            "f1_macro_test": 0.8401134859255158,
+            "f1_weighted_test": 0.8396773972801306,
+            "f1_macro_cv": 0.8432,
+            "test_cv_difference": -0.0030865140744841257
+        },
+        "best_category": {
+            "category": "datascience",
+            "f1": 0.8735
+        },
+        "most_difficult_category": {
+            "category": "backend",
+            "f1": 0.8
+        },
+        "generalization": "consistent",
+        "model_sha256": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb"
+    },
+    "capabilities": {
+        "global_explainability": true,
+        "local_explainability": true,
+        "uncertainty_analysis": true,
+        "error_analysis": true,
+        "robustness_tests": true,
+        "batch_inference": true,
+        "oov_rejection": true,
+        "rest_api": true,
+        "docker_ready": true,
+        "monitoring": true
+    },
+    "deployment": {
+        "docker_image": "techmind-api:1.0.0",
+        "runtime_validation": "not_available",
+        "default_binding": "127.0.0.1:8000",
+        "runs_as_non_root": true,
+        "read_only_compose": true
+    },
+    "monitoring": {
+        "reference_documents": 917,
+        "drift_metrics": [
+            "category_jsd",
+            "status_jsd",
+            "margin_psi",
+            "active_terms_psi",
+            "words_psi"
+        ],
+        "alerts_generated_in_simulation": 16
+    },
+    "audit": {
+        "approved_controls": 14,
+        "total_controls": 14,
+        "approved_rate": 1.0,
+        "approved_components": 16,
+        "total_components": 16,
+        "component_approval_rate": 1.0,
+        "model_integrity": true
+    },
+    "limitations": [
+        {
+            "Área": "Datos",
+            "Limitación": "El modelo fue entrenado con cuatro categorías tecnológicas predefinidas.",
+            "Impacto": "Contenido de otras áreas puede ser rechazado o asignado a la categoría más cercana.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Área": "Datos",
+            "Limitación": "El conjunto disponible es relativamente pequeño para cubrir toda la terminología tecnológica.",
+            "Impacto": "Términos nuevos o muy especializados pueden quedar fuera del vocabulario.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Área": "Modelo",
+            "Limitación": "El margen de decisión no es una probabilidad calibrada.",
+            "Impacto": "No debe interpretarse como porcentaje de confianza.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Área": "Modelo",
+            "Limitación": "El F1 de entrenamiento es superior al F1 de validación.",
+            "Impacto": "Existe sobreajuste moderado, aunque la prueba reservada mostró generalización consistente.",
+            "Prioridad": "Media"
+        },
+        {
+            "Área": "Modelo",
+            "Limitación": "Backend fue la categoría con menor F1.",
+            "Impacto": "Puede confundirse con cloud, frontend u otros textos de arquitectura.",
+            "Prioridad": "Media"
+        },
+        {
+            "Área": "Inferencia",
+            "Limitación": "Los textos muy cortos, ambiguos o multitemáticos son más difíciles de clasificar.",
+            "Impacto": "Aumentan las predicciones enviadas a revisión.",
+            "Prioridad": "Media"
+        },
+        {
+            "Área": "Despliegue",
+            "Limitación": "La imagen Docker no fue construida en el entorno actual.",
+            "Impacto": "La validación fue estática porque Docker Engine no estaba disponible.",
+            "Prioridad": "Media"
+        },
+        {
+            "Área": "Seguridad",
+            "Limitación": "La API local no incorpora autenticación ni HTTPS.",
+            "Impacto": "No debe exponerse directamente a Internet.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Área": "Monitoreo",
+            "Limitación": "PSI y Jensen-Shannon detectan cambios estadísticos, no pérdida real de calidad.",
+            "Impacto": "Se necesitan etiquetas posteriores para evaluar Accuracy, Recall y F1 en producción.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Área": "Privacidad",
+            "Limitación": "El registro de textos puede contener información sensible.",
+            "Impacto": "Se requieren políticas de anonimización, acceso y retención.",
+            "Prioridad": "Alta"
+        }
+    ],
+    "recommendations": [
+        {
+            "Prioridad": 1,
+            "Horizonte": "Corto plazo",
+            "Recomendación": "Construir y ejecutar la imagen Docker en un entorno con Docker Engine disponible.",
+            "Resultado_esperado": "Validación real del build, health check y endpoint predict."
+        },
+        {
+            "Prioridad": 2,
+            "Horizonte": "Corto plazo",
+            "Recomendación": "Añadir autenticación, HTTPS, límites de solicitudes y gestión externa de secretos.",
+            "Resultado_esperado": "API preparada para un entorno controlado de producción."
+        },
+        {
+            "Prioridad": 3,
+            "Horizonte": "Corto plazo",
+            "Recomendación": "Revisar manualmente los errores de backend y las confusiones más frecuentes.",
+            "Resultado_esperado": "Mejora del desempeño de la categoría más difícil."
+        },
+        {
+            "Prioridad": 4,
+            "Horizonte": "Mediano plazo",
+            "Recomendación": "Recolectar ejemplos reales de producción y crear un conjunto de evaluación temporal.",
+            "Resultado_esperado": "Medición de deriva y calidad fuera del conjunto original."
+        },
+        {
+            "Prioridad": 5,
+            "Horizonte": "Mediano plazo",
+            "Recomendación": "Calibrar los scores del clasificador mediante CalibratedClassifierCV.",
+            "Resultado_esperado": "Valores interpretables como probabilidades aproximadas."
+        },
+        {
+            "Prioridad": 6,
+            "Horizonte": "Mediano plazo",
+            "Recomendación": "Ajustar los umbrales de revisión y alerta usando datos reales.",
+            "Resultado_esperado": "Menos falsos positivos en el monitoreo."
+        },
+        {
+            "Prioridad": 7,
+            "Horizonte": "Mediano plazo",
+            "Recomendación": "Implementar anonimización y una política de retención para los registros operativos.",
+            "Resultado_esperado": "Reducción de riesgos de privacidad."
+        },
+        {
+            "Prioridad": 8,
+            "Horizonte": "Largo plazo",
+            "Recomendación": "Comparar el modelo TF-IDF con embeddings o modelos transformer ligeros.",
+            "Resultado_esperado": "Mayor cobertura semántica para textos nuevos."
+        },
+        {
+            "Prioridad": 9,
+            "Horizonte": "Largo plazo",
+            "Recomendación": "Evaluar clasificación multietiqueta para textos que pertenezcan a varias áreas.",
+            "Resultado_esperado": "Mejor representación de contenido multitemático."
+        },
+        {
+            "Prioridad": 10,
+            "Horizonte": "Largo plazo",
+            "Recomendación": "Automatizar reentrenamiento, pruebas y versionado mediante CI/CD.",
+            "Resultado_esperado": "Ciclo de vida reproducible y auditable."
+        }
+    ],
+    "environment": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "notebook_executable": "C:\\Users\\MAMÁ\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe"
+    },
+    "generated_at": "2026-08-06T04:43:12+00:00"
+}
