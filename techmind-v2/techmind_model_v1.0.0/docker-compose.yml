@@ -1,0 +1,46 @@
+services:
+  techmind-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: "${TECHMIND_IMAGE_NAME:-techmind-api}:${TECHMIND_IMAGE_TAG:-1.0.0}"
+
+    container_name: "${TECHMIND_CONTAINER_NAME:-techmind-api}"
+
+    init: true
+
+    ports:
+      - "127.0.0.1:${TECHMIND_API_PORT:-8000}:8000"
+
+    environment:
+      TECHMIND_PACKAGE_ROOT: /app
+      TECHMIND_API_HOST: 0.0.0.0
+      TECHMIND_API_PORT: "8000"
+      PYTHONUNBUFFERED: "1"
+      PYTHONUTF8: "1"
+
+    restart: unless-stopped
+
+    read_only: true
+
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    stop_grace_period: 20s
+
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - deployment/healthcheck.py
+      interval: 30s
+      timeout: 6s
+      start_period: 20s
+      retries: 3

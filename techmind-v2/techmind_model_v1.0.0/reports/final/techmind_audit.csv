@@ -1,0 +1,15 @@
+﻿Control,Categoría,Resultado,Detalle
+Modelo final,Archivo,True,C:\Users\MAMÁ\Downloads\models\techmind_modelo_final.joblib
+Metadatos del paquete,Archivo,True,C:\Users\MAMÁ\Downloads\export\techmind_model\package_metadata.json
+Manifiesto,Archivo,True,C:\Users\MAMÁ\Downloads\export\techmind_model\manifest.json
+README,Archivo,True,C:\Users\MAMÁ\Downloads\export\techmind_model\README.md
+Informe de despliegue,Archivo,True,C:\Users\MAMÁ\Downloads\export\techmind_model\reports\deployment_validation.json
+Informe de monitoreo,Archivo,True,C:\Users\MAMÁ\Downloads\export\techmind_model\reports\monitoring\monitoring_report.json
+Integridad del modelo original,Integridad,True,488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb
+Clases del modelo,Modelo,True,"backend, cloud, datascience, frontend"
+Características TF-IDF,Modelo,True,30000
+Generalización consistente,Modelo,True,Diferencia Test-CV: -0.0031
+Smoke test del modelo,Paquete,True,Aprobado
+Smoke test de API,API,True,Aprobado
+Contenedorización,Despliegue,True,Runtime: not_available
+Monitoreo operativo,Monitoreo,True,Perfil de referencia de 917 documentos.

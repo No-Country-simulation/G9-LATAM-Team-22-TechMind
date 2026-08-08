@@ -1,0 +1,45 @@
+{
+    "proyecto": "TechMind v2.0",
+    "fecha_generacion": "2026-08-05T19:47:47",
+    "modelo": "TF-IDF + SGDClassifier optimizado",
+    "modelo_modificado": false,
+    "ejemplos_controlados": {
+        "cantidad": 8,
+        "accuracy_base": 1.0,
+        "transformaciones": 14
+    },
+    "muestra_real": {
+        "documentos": 80,
+        "transformaciones": 8,
+        "transformacion_mas_estable": {
+            "nombre": "Espacios irregulares",
+            "tasa": 1.0
+        },
+        "transformacion_mas_sensible": {
+            "nombre": "Mayúsculas",
+            "tasa": 0.325
+        }
+    },
+    "textos_breves": {
+        "cantidad": 12,
+        "accuracy_descriptiva": 1.0
+    },
+    "fuera_vocabulario": {
+        "cantidad_pruebas": 10,
+        "sin_terminos_reconocidos": 10,
+        "categoria_mayor_intercepto": "frontend"
+    },
+    "multitematico": {
+        "cantidad": 6,
+        "prediccion_en_temas": 1.0,
+        "top2_cubre_ambos_temas": 0.8333333333333334
+    },
+    "recomendaciones": [
+        "Normalizar el uso de mayúsculas y minúsculas antes de la inferencia, pero solo después de validarlo con un modelo entrenado para esa normalización.",
+        "Rechazar o enviar a revisión las entradas sin términos reconocidos por el vocabulario.",
+        "Monitorear específicamente la transformación 'Mayúsculas', porque presentó sensibilidad elevada.",
+        "Utilizar el margen de decisión y la cantidad de términos activos como señales de revisión.",
+        "No convertir estas observaciones en cambios del modelo sin un nuevo conjunto de validación."
+    ],
+    "advertencia": "Las pruebas son diagnósticas y no sustituyen una validación sobre datos nuevos de producción."
+}

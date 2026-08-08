@@ -1,0 +1,30 @@
+{
+    "version_interfaz": "1.0.0",
+    "modelo": "TF-IDF + SGDClassifier optimizado",
+    "version_modelo": "1.0.0",
+    "sha256_modelo": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb",
+    "categorias": [
+        "backend",
+        "cloud",
+        "datascience",
+        "frontend"
+    ],
+    "limites_entrada": {
+        "max_documentos_lote": 500,
+        "min_caracteres": 2,
+        "max_caracteres": 50000,
+        "min_palabras_automatico": 3
+    },
+    "umbrales_margen_descriptivos": {
+        "p10": 0.2576947877584427,
+        "p25": 0.8058108385192545,
+        "p50": 1.7853941807475553,
+        "p90": 3.311995540144451
+    },
+    "umbral_pocos_terminos": 15,
+    "advertencias": [
+        "El margen de decisión no es una probabilidad calibrada.",
+        "Los umbrales operativos son provisionales y deben validarse con datos de producción.",
+        "Los textos sin términos reconocidos deben rechazarse."
+    ]
+}

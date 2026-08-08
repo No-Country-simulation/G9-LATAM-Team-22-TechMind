@@ -1,0 +1,11 @@
+﻿Área,Limitación,Impacto,Prioridad
+Datos,El modelo fue entrenado con cuatro categorías tecnológicas predefinidas.,Contenido de otras áreas puede ser rechazado o asignado a la categoría más cercana.,Alta
+Datos,El conjunto disponible es relativamente pequeño para cubrir toda la terminología tecnológica.,Términos nuevos o muy especializados pueden quedar fuera del vocabulario.,Alta
+Modelo,El margen de decisión no es una probabilidad calibrada.,No debe interpretarse como porcentaje de confianza.,Alta
+Modelo,El F1 de entrenamiento es superior al F1 de validación.,"Existe sobreajuste moderado, aunque la prueba reservada mostró generalización consistente.",Media
+Modelo,Backend fue la categoría con menor F1.,"Puede confundirse con cloud, frontend u otros textos de arquitectura.",Media
+Inferencia,"Los textos muy cortos, ambiguos o multitemáticos son más difíciles de clasificar.",Aumentan las predicciones enviadas a revisión.,Media
+Despliegue,La imagen Docker no fue construida en el entorno actual.,La validación fue estática porque Docker Engine no estaba disponible.,Media
+Seguridad,La API local no incorpora autenticación ni HTTPS.,No debe exponerse directamente a Internet.,Alta
+Monitoreo,"PSI y Jensen-Shannon detectan cambios estadísticos, no pérdida real de calidad.","Se necesitan etiquetas posteriores para evaluar Accuracy, Recall y F1 en producción.",Alta
+Privacidad,El registro de textos puede contener información sensible.,"Se requieren políticas de anonimización, acceso y retención.",Alta

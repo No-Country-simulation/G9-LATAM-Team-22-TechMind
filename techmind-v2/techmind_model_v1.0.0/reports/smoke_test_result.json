@@ -1,0 +1,49 @@
+{
+    "status": "approved",
+    "return_code": 0,
+    "duration_seconds": 2.8021652000024915,
+    "python_executable": "C:\\Users\\MAMÁ\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe",
+    "smoke_test_path": "C:\\Users\\MAMÁ\\Downloads\\export\\techmind_model\\tests\\smoke_test.py",
+    "package_root": "C:\\Users\\MAMÁ\\Downloads\\export\\techmind_model",
+    "stdout": {
+        "status": "ok",
+        "health": {
+            "status": "ok",
+            "interface_version": "1.0.0",
+            "model_name": "TF-IDF + SGDClassifier optimizado",
+            "model_status": "Modelo final evaluado",
+            "classes": [
+                "backend",
+                "cloud",
+                "datascience",
+                "frontend"
+            ],
+            "tfidf_features": 30000,
+            "model_sha256": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb",
+            "pipeline_steps": [
+                "tfidf",
+                "clasificador"
+            ]
+        },
+        "expected_predictions": [
+            "backend",
+            "cloud",
+            "datascience",
+            "frontend"
+        ],
+        "obtained_predictions": [
+            "backend",
+            "cloud",
+            "datascience",
+            "frontend"
+        ],
+        "valid_documents": 4,
+        "invalid_documents": 4,
+        "oov_rejected": true,
+        "explanation_available": true
+    },
+    "stderr": "",
+    "stdout_was_bytes": true,
+    "stderr_was_bytes": true,
+    "executed_at": "2026-08-05T19:48:03"
+}
