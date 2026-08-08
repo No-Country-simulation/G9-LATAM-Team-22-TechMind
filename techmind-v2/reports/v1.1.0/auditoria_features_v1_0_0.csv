@@ -1,0 +1,401 @@
+categoria,ranking,termino,coeficiente,es_stopword
+backend,1,backend,6.026514943945929,False
+backend,2,go,4.393038029819594,False
+backend,3,fastapi,2.872771545496686,False
+backend,4,http,2.750162459997612,False
+backend,5,spring,2.7074366716775464,False
+backend,6,php,2.6091453335577772,False
+backend,7,nestjs,2.608725513375445,False
+backend,8,api,2.5881414996018677,False
+backend,9,database,2.5122151985155035,False
+backend,10,webhook,2.436045573202869,False
+backend,11,that,2.4047306010634872,False
+backend,12,java,2.317208542227787,False
+backend,13,queue,2.258965965842661,False
+backend,14,kafka,2.1732767105525883,False
+backend,15,seconds,2.0438327265654532,False
+backend,16,saas,2.036753460318108,False
+backend,17,system,2.018098922207191,False
+backend,18,payment,1.990536379436956,False
+backend,19,distributed,1.9311504980250094,False
+backend,20,runtime,1.9145324522871958,False
+backend,21,in go,1.8817381715360824,False
+backend,22,postgres,1.8688562306995302,False
+backend,23,apis,1.8663010494234995,False
+backend,24,sql,1.8036226272381306,False
+backend,25,laravel,1.7991906962100757,False
+backend,26,rate,1.783406345191868,False
+backend,27,redis,1.7749403940982067,False
+backend,28,bean,1.7651325599101917,False
+backend,29,query,1.7218589327979361,False
+backend,30,day,1.7110653339110693,False
+backend,31,during,1.6976437264520114,False
+backend,32,idempotency,1.6843116016569701,False
+backend,33,request,1.6529033391183,False
+backend,34,email,1.6488284888449958,False
+backend,35,in,1.6464890752363819,False
+backend,36,crud,1.6273730832929703,False
+backend,37,server-side,1.626090609977571,False
+backend,38,api design,1.608243975739322,False
+backend,39,internship,1.5950137151371797,False
+backend,40,hyperlane,1.5734016808301492,False
+backend,41,pocketbase,1.5691245074943299,False
+backend,42,order,1.553990775918125,False
+backend,43,cache,1.5534799147162752,False
+backend,44,had,1.5477911884110085,False
+backend,45,through,1.5359009701395214,False
+backend,46,routing,1.5307000760356748,False
+backend,47,at the,1.5189669957065353,False
+backend,48,i m,1.5154742719033785,False
+backend,49,read,1.5100221723676617,False
+backend,50,aggregate,1.4863140934151708,False
+backend,51,keys,1.4850328852077799,False
+backend,52,systems,1.4745743918013052,False
+backend,53,re,1.4736620247545138,False
+backend,54,node.js,1.456344538871485,False
+backend,55,logging,1.4353956303598456,False
+backend,56,fintech,1.4204907015202544,False
+backend,57,sms,1.4203502206702958,False
+backend,58,system design,1.4026205946784225,False
+backend,59,prisma,1.3981692883347174,False
+backend,60,whatsapp,1.3962482885663827,False
+backend,61,protocol,1.3958821126317154,False
+backend,62,the,1.3954875280117487,False
+backend,63,never,1.3853163771295225,False
+backend,64,backends,1.3851731161503236,False
+backend,65,covers,1.3841575263111825,False
+backend,66,erp,1.3771483038058265,False
+backend,67,integration,1.3717445423572143,False
+backend,68,emails,1.36349528841276,False
+backend,69,logic,1.3626168699890528,False
+backend,70,real-time chatroom,1.3616763181677494,False
+backend,71,chatroom,1.3616763181677494,False
+backend,72,full-stack,1.345168241638319,False
+backend,73,webhooks,1.3450641340711194,False
+backend,74,elasticsearch,1.333103255037094,False
+backend,75,polling,1.3308569026489132,False
+backend,76,this week,1.3262180820438874,False
+backend,77,retry,1.323874875665214,False
+backend,78,firebase,1.315702498982774,False
+backend,79,rate limiter,1.314042444055703,False
+backend,80,limiter,1.3009934633489944,False
+backend,81,baas,1.2975724837300542,False
+backend,82,supabase,1.2965566480103474,False
+backend,83,streaming,1.292347443858225,False
+backend,84,integrating,1.2835090528594368,False
+backend,85,failure,1.2802618517584303,False
+backend,86,bugs,1.278723983041987,False
+backend,87,websocket,1.2763995100451797,False
+backend,88,tips,1.263480239990636,False
+backend,89,sdk,1.2598072090616257,False
+backend,90,a backend,1.2546279149600388,False
+backend,91,hackathon,1.2501360854151773,False
+backend,92,open source,1.2496341246816924,False
+backend,93,broke,1.2388342413973201,False
+backend,94,endpoints,1.2352848465134774,False
+backend,95,buffers,1.2297436929721322,False
+backend,96,multi-currency,1.2270244417802174,False
+backend,97,building the,1.2227723307272709,False
+backend,98,saas platforms,1.2211620261341318,False
+backend,99,high-throughput,1.2198583646246108,False
+backend,100,backend engineering,1.2170475284836653,False
+cloud,1,cloud,9.660929656412499,False
+cloud,2,aws,6.283672978155077,False
+cloud,3,azure,4.138708725659118,False
+cloud,4,kubernetes,4.080837193882157,False
+cloud,5,devops,2.824980416516795,False
+cloud,6,infrastructure,2.812067913672531,False
+cloud,7,terraform,2.778202025088629,False
+cloud,8,hosting,2.5269284392902045,False
+cloud,9,claude,2.513439291532066,False
+cloud,10,costs,2.3161459399561375,False
+cloud,11,resource,2.0599128424577047,False
+cloud,12,ai,2.050815225187635,False
+cloud,13,monitoring,1.8811862152508154,False
+cloud,14,linux,1.856862305516155,False
+cloud,15,software,1.856789172089306,False
+cloud,16,railway,1.8251686493822454,False
+cloud,17,multi-tenant saas,1.7425363456787313,False
+cloud,18,lambda,1.7215229650050177,False
+cloud,19,cloudflare,1.7185749609966423,False
+cloud,20,cd,1.6473662121055477,False
+cloud,21,security,1.603967698175371,False
+cloud,22,self-hosted,1.5934978096925105,False
+cloud,23,python package,1.5923637482470792,False
+cloud,24,iam,1.5868010310196017,False
+cloud,25,backup,1.5760559561208456,False
+cloud,26,keeping,1.5691493963299634,False
+cloud,27,bill,1.5432633373815061,False
+cloud,28,are you,1.5427601056759208,False
+cloud,29,microsoft,1.5337737861394856,False
+cloud,30,rest api,1.5198733378637235,False
+cloud,31,multi-cloud,1.490848168270983,False
+cloud,32,billing,1.4886213210937165,False
+cloud,33,package,1.4575485569656683,False
+cloud,34,exam,1.4476888484525012,False
+cloud,35,training,1.4404673347378742,False
+cloud,36,conversion,1.4278543900482126,False
+cloud,37,gpt-5.6,1.4204323442044866,False
+cloud,38,replication,1.4159173235813522,False
+cloud,39,data protection,1.4157070981475848,False
+cloud,40,cloud-native,1.4029422667623639,False
+cloud,41,hello dev.to,1.3731273846733676,False
+cloud,42,organizations,1.3672643270105829,False
+cloud,43,it s,1.3345120030540671,False
+cloud,44,your first,1.327393618806242,False
+cloud,45,s3,1.3247643177776158,False
+cloud,46,multi-tenant,1.3229320813471013,False
+cloud,47,nat,1.3122452885407627,False
+cloud,48,data center,1.3091042950448106,False
+cloud,49,electra,1.3033447777779013,False
+cloud,50,sap,1.295129760147538,False
+cloud,51,gemini,1.282287589135323,False
+cloud,52,for 2026,1.281410841765331,False
+cloud,53,storage,1.2775153421675713,False
+cloud,54,cli,1.2540670253172344,False
+cloud,55,2026,1.2451478297510223,False
+cloud,56,sre,1.234892948927827,False
+cloud,57,owning,1.221833425881268,False
+cloud,58,overview,1.2177050841971957,False
+cloud,59,a quick,1.2117832567464633,False
+cloud,60,for ai,1.2105195278850251,False
+cloud,61,securing,1.1912856933999962,False
+cloud,62,vps,1.1901696826481154,False
+cloud,63,the cloud,1.1883651570865006,False
+cloud,64,in cloud,1.1871286846667974,False
+cloud,65,workloads,1.184205217670041,False
+cloud,66,google,1.1821597494748584,False
+cloud,67,can,1.1806633167981928,False
+cloud,68,online training,1.1736640849120872,False
+cloud,69,cloud security,1.1718482101109222,False
+cloud,70,owning your,1.166437218404609,False
+cloud,71,data engineering,1.1640390906971154,False
+cloud,72,benchmarks,1.1631944132251681,False
+cloud,73,cognitive,1.152045733401039,False
+cloud,74,on azure,1.150328567471239,False
+cloud,75,ci/cd,1.150103102301542,False
+cloud,76,in usa,1.1416468945939993,False
+cloud,77,photos,1.1359931830188188,False
+cloud,78,power platform,1.135538388153217,False
+cloud,79,networks,1.134100982866048,False
+cloud,80,server,1.13062774425195,False
+cloud,81,office,1.1282678443293954,False
+cloud,82,capacity,1.1153951820416603,False
+cloud,83,aeris,1.115162852566996,False
+cloud,84,autoscaling,1.1146862370907296,False
+cloud,85,terminal,1.1077421762750004,False
+cloud,86,multi-region,1.1066514295195307,False
+cloud,87,repo,1.10479023389247,False
+cloud,88,hybrid,1.1000589616211325,False
+cloud,89,pipeline on,1.0956044861566234,False
+cloud,90,shared configuration,1.094933935428558,False
+cloud,91,business in,1.0940963419181806,False
+cloud,92,decisions,1.0913241163546492,False
+cloud,93,the it,1.0897967170226748,False
+cloud,94,private,1.0880013987791095,False
+cloud,95,separate,1.0872252988591826,False
+cloud,96,documents,1.0861174661474915,False
+cloud,97,review,1.0776582937174823,False
+cloud,98,of a,1.0760830158174752,False
+cloud,99,libsql,1.0720494775525642,False
+cloud,100,nas,1.0717878321803544,False
+datascience,1,data,6.506376269047643,False
+datascience,2,bi,2.288124162624879,False
+datascience,3,python,2.2256687854018558,False
+datascience,4,csv,2.1206111612909004,False
+datascience,5,backtest,2.1196354328661497,False
+datascience,6,science,2.1136366739540717,False
+datascience,7,data science,2.08805182260474,False
+datascience,8,prediction,2.080369690416983,False
+datascience,9,machine learning,2.058013281246217,False
+datascience,10,excel,2.043439005905087,False
+datascience,11,dolphinscheduler,2.0371401275847445,False
+datascience,12,sports,2.027487092822415,False
+datascience,13,analysis,1.983665966298126,False
+datascience,14,scrape,1.9697550377642943,False
+datascience,15,web scraping,1.9370254781784422,False
+datascience,16,analyst,1.9079730506391157,False
+datascience,17,power bi,1.9027898939483736,False
+datascience,18,apache,1.7866200463768163,False
+datascience,19,scraping,1.7818942575192211,False
+datascience,20,model,1.7408542105439104,False
+datascience,21,000,1.7171747431300737,False
+datascience,22,dataset,1.6450067862017876,False
+datascience,23,regression,1.6066764856940736,False
+datascience,24,leads,1.59692259272571,False
+datascience,25,analyze,1.5842454627826343,False
+datascience,26,oceandata4ai,1.5697047935342168,False
+datascience,27,tracker,1.5674897679677153,False
+datascience,28,sports data,1.5484584938444466,False
+datascience,29,forest,1.5397902685539016,False
+datascience,30,reporting,1.5281499494162942,False
+datascience,31,2026 how,1.5237946656123897,False
+datascience,32,match,1.514801104392523,False
+datascience,33,stats tracker,1.5140549575054387,False
+datascience,34,stats,1.5140549575054387,False
+datascience,35,dataford,1.488449429780877,False
+datascience,36,intelligence,1.4726659377456037,False
+datascience,37,to scrape,1.471834881399922,False
+datascience,38,probability,1.4674738020550675,False
+datascience,39,prices,1.4130996987157582,False
+datascience,40,powerbi,1.4115996373435622,False
+datascience,41,from an,1.403842312444858,False
+datascience,42,polymarket,1.3801800338952108,False
+datascience,43,models,1.3782915166715528,False
+datascience,44,feature store,1.377205908507907,False
+datascience,45,iot internet,1.3698370446410135,False
+datascience,46,things service,1.3698370446410135,False
+datascience,47,seatunnel,1.3620631981475004,False
+datascience,48,apache dolphinscheduler,1.3471634960232242,False
+datascience,49,andrew,1.3467259860605723,False
+datascience,50,score,1.3457197064675557,False
+datascience,51,school,1.3407832884460629,False
+datascience,52,part,1.3380557230908516,False
+datascience,53,world,1.323687860809515,False
+datascience,54,beats,1.3232552615821032,False
+datascience,55,assistance,1.319200250518788,False
+datascience,56,from,1.3162294790756253,False
+datascience,57,eval,1.313707420569458,False
+datascience,58,power,1.3050743663484194,False
+datascience,59,data analytics,1.301609453554184,False
+datascience,60,cup,1.301017204257654,False
+datascience,61,world cup,1.301017204257654,False
+datascience,62,machine,1.29842208735065,False
+datascience,63,i tracked,1.2926782477411791,False
+datascience,64,tracked,1.2926782477411791,False
+datascience,65,loss,1.2867883434940817,False
+datascience,66,engineer course,1.2847990410813186,False
+datascience,67,des,1.273689965799105,False
+datascience,68,apache seatunnel,1.2665149579863144,False
+datascience,69,write for,1.2664279437583168,False
+datascience,70,ai automation,1.2590281786658692,False
+datascience,71,modeling,1.254656119835843,False
+datascience,72,residential,1.2507214090268282,False
+datascience,73,experiment,1.240740618131848,False
+datascience,74,model analysis,1.2370986697613258,False
+datascience,75,prediction model,1.2370986697613258,False
+datascience,76,match prediction,1.2370986697613258,False
+datascience,77,how ai,1.230170173511794,False
+datascience,78,sql,1.2290643931097862,False
+datascience,79,your pipeline,1.2276292999443146,False
+datascience,80,microsoft excel,1.227181057751547,False
+datascience,81,scraper,1.2220315484819213,False
+datascience,82,if,1.211155929092777,False
+datascience,83,pandas,1.1900376375867854,False
+datascience,84,growth,1.189003227508079,False
+datascience,85,classifier,1.1839286589878917,False
+datascience,86,csvs,1.1752291231386784,False
+datascience,87,a data,1.171907278599455,False
+datascience,88,ml,1.1695473221786878,False
+datascience,89,sentiment leads,1.1663549149707262,False
+datascience,90,catching,1.1663549149707262,False
+datascience,91,credit,1.1649709466701266,False
+datascience,92,leads with,1.1630413840690237,False
+datascience,93,pipeline lessons,1.147657761976059,False
+datascience,94,ai development,1.1462708189669353,False
+datascience,95,community,1.1356822608098214,False
+datascience,96,pipeline is,1.133813861536248,False
+datascience,97,behind,1.1309597195358059,False
+datascience,98,flamelit,1.128714362516121,False
+datascience,99,of my,1.1275426191441449,False
+datascience,100,markets,1.126565979710473,False
+frontend,1,frontend,7.594366400294916,False
+frontend,2,react,5.888096964120044,False
+frontend,3,css,4.7752822881259505,False
+frontend,4,javascript,3.9135771851001286,False
+frontend,5,ui,3.7114282376445487,False
+frontend,6,angular,3.573368135441667,False
+frontend,7,web,2.5697496878111714,False
+frontend,8,html,2.4125177888338936,False
+frontend,9,front-end,2.4105436986828788,False
+frontend,10,building,2.370283928460427,False
+frontend,11,component,2.2996392212698744,False
+frontend,12,my software,2.2227522063728817,False
+frontend,13,sites,2.1316042351832123,False
+frontend,14,components,2.1058946879372864,False
+frontend,15,design systems,1.9815659358995763,False
+frontend,16,testing,1.9680026307715586,False
+frontend,17,browser,1.9631563670076626,False
+frontend,18,page,1.939585050973676,False
+frontend,19,technical,1.9239890334329015,False
+frontend,20,strategies,1.881213299770033,False
+frontend,21,engineering marathon,1.8617648380054492,False
+frontend,22,accessibility,1.8540020016117453,False
+frontend,23,next.js,1.8420798530880216,False
+frontend,24,dom,1.826263169883366,False
+frontend,25,button,1.8175025645309635,False
+frontend,26,performance,1.746559327766918,False
+frontend,27,redux,1.7406875850513974,False
+frontend,28,website,1.7261429758577933,False
+frontend,29,designing,1.718846944042078,False
+frontend,30,nextjs,1.7094217634058473,False
+frontend,31,figma,1.707663771238965,False
+frontend,32,in javascript,1.699627861736684,False
+frontend,33,xss,1.6845327485114712,False
+frontend,34,design tokens,1.6776302445222577,False
+frontend,35,building a,1.6767822510116315,False
+frontend,36,colors,1.6455570073815977,False
+frontend,37,event-sourced,1.6284843849691086,False
+frontend,38,framer,1.6265800981314622,False
+frontend,39,personal,1.6240437980330855,False
+frontend,40,design system,1.6213053685959207,False
+frontend,41,design,1.5982835221771539,False
+frontend,42,a resilient,1.5608135268225591,False
+frontend,43,ai agents,1.5528605203443406,False
+frontend,44,euv,1.5437951471256426,False
+frontend,45,development cost,1.54307800202131,False
+frontend,46,your team,1.5406870012129774,False
+frontend,47,accessible,1.5367261837866388,False
+frontend,48,day 45,1.5273842002256177,False
+frontend,49,45 of,1.5273842002256177,False
+frontend,50,foreword,1.516952272687227,False
+frontend,51,form,1.5079463303632652,False
+frontend,52,useeffect,1.5054582094719875,False
+frontend,53,bundle,1.5008562531844056,False
+frontend,54,for frontend,1.4920945885184307,False
+frontend,55,marathon,1.4849094051800031,False
+frontend,56,canvas,1.4821262904514665,False
+frontend,57,developers a,1.477264884825371,False
+frontend,58,45,1.4546449108102066,False
+frontend,59,an accessible,1.447412699324096,False
+frontend,60,color,1.4452871781836611,False
+frontend,61,layout,1.4410738811046395,False
+frontend,62,practical,1.4303995176203934,False
+frontend,63,resilient,1.4279303269330847,False
+frontend,64,library,1.411617289286721,False
+frontend,65,client-side,1.3973157946613253,False
+frontend,66,tailwind,1.3896516085564525,False
+frontend,67,js,1.3814006708587119,False
+frontend,68,icons,1.3781623927711601,False
+frontend,69,chrome,1.350463001664288,False
+frontend,70,essay,1.3448467836355156,False
+frontend,71,lottie,1.343885464684121,False
+frontend,72,approach,1.3413293146919714,False
+frontend,73,vite,1.3359762322943334,False
+frontend,74,vanilla,1.3351780989450877,False
+frontend,75,collaboration,1.3316883022066934,False
+frontend,76,code,1.3163230183735677,False
+frontend,77,marathon today,1.3157141809495232,False
+frontend,78,building real-time,1.3143184774926597,False
+frontend,79,fetching,1.3104024047050715,False
+frontend,80,seamless,1.3080145492041488,False
+frontend,81,animations,1.2978745063894572,False
+frontend,82,command,1.2885316278766359,False
+frontend,83,react.js,1.2843555588841005,False
+frontend,84,tool,1.271187506172089,False
+frontend,85,software engineering,1.2703467617427098,False
+frontend,86,signals,1.2667013311049855,False
+frontend,87,any,1.245012549630828,False
+frontend,88,browsers,1.2426319361127642,False
+frontend,89,sites to,1.2391653744813738,False
+frontend,90,senior,1.2319627653708023,False
+frontend,91,with elm,1.223867542095847,False
+frontend,92,member,1.2189692487728454,False
+frontend,93,threat,1.2088845102297432,False
+frontend,94,codebase,1.204388936667011,False
+frontend,95,on the,1.1848537129038827,False
+frontend,96,avif,1.1799136061526054,False
+frontend,97,where you,1.1796555726353757,False
+frontend,98,collaborative,1.1707457088948905,False
+frontend,99,bad,1.1592889681289043,False
+frontend,100,euv project,1.157494155258695,False

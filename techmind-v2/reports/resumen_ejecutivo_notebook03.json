@@ -1,0 +1,72 @@
+{
+    "proyecto": "TechMind v2.0",
+    "notebook": "03_entrenamiento_comparacion_modelos",
+    "fecha_generacion": "2026-07-31T01:28:47",
+    "objetivo": "Clasificar contenido tecnológico en backend, cloud, datascience y frontend.",
+    "dataset": {
+        "registros_totales": 4583,
+        "registros_entrenamiento": 3666,
+        "registros_prueba": 917,
+        "categorias": [
+            "backend",
+            "cloud",
+            "datascience",
+            "frontend"
+        ],
+        "variable_textual": "texto_combinado_ponderado"
+    },
+    "seleccion_modelo": {
+        "modelo_definitivo": "TF-IDF + SGDClassifier optimizado",
+        "tipo_entrada": "Solo texto",
+        "numero_features_tfidf": 30000,
+        "hiperparametros": {
+            "clasificador__alpha": 3e-05,
+            "clasificador__loss": "hinge",
+            "tfidf__min_df": 1,
+            "tfidf__ngram_range": [
+                1,
+                2
+            ],
+            "tfidf__sublinear_tf": true
+        }
+    },
+    "resultados_validacion_cruzada": {
+        "f1_macro": 0.8432224238703567,
+        "desviacion": 0.011568444300989791,
+        "brecha_train_cv": 0.15677757612964327
+    },
+    "resultados_prueba": {
+        "accuracy": 0.8386041439476554,
+        "precision_macro": 0.8444900965351991,
+        "recall_macro": 0.838527469829268,
+        "f1_macro": 0.8401134859255158,
+        "f1_weighted": 0.8396773972801306
+    },
+    "generalizacion": {
+        "diferencia_test_cv": -0.003108937944840906,
+        "diagnostico": "Generalización consistente",
+        "resultado_dentro_rango_cv": true
+    },
+    "categorias": {
+        "mejor": {
+            "nombre": "datascience",
+            "f1": 0.8735083532219571
+        },
+        "mas_dificil": {
+            "nombre": "backend",
+            "f1": 0.8
+        }
+    },
+    "comparacion_hibrida": {
+        "f1_textual": 0.8432224238703567,
+        "f1_hibrido": 0.8281886806374448,
+        "diferencia": -0.015033743232911956,
+        "folds_ganados_hibrido": 0,
+        "modelo_seleccionado": "Solo texto"
+    },
+    "estado": {
+        "evaluacion_final_aprobada": true,
+        "modelo_reproducible": true,
+        "notebook_completado": true
+    }
+}

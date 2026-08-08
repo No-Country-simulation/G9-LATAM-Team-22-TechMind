@@ -1,0 +1,43 @@
+{
+    "proyecto": "TechMind v2.0",
+    "fecha_exportacion": "2026-07-30T00:46:18",
+    "variable_objetivo": "categoria",
+    "variable_textual_principal": "texto_combinado",
+    "variantes_textuales": [
+        "texto_modelo_base",
+        "texto_modelo_titulo",
+        "texto_combinado",
+        "texto_combinado_ponderado"
+    ],
+    "caracteristicas_numericas": [
+        "titulo_num_caracteres",
+        "titulo_num_palabras",
+        "texto_num_caracteres",
+        "texto_num_palabras",
+        "combinado_num_caracteres",
+        "combinado_num_palabras",
+        "num_palabras_clave",
+        "longitud_promedio_palabra",
+        "proporcion_digitos",
+        "cantidad_versiones",
+        "cantidad_terminos_tecnicos",
+        "densidad_terminos_tecnicos",
+        "cantidad_urls",
+        "cantidad_simbolos_codigo",
+        "tiene_palabras_clave",
+        "tiene_version",
+        "tiene_url",
+        "tiene_codigo",
+        "tiene_terminos_tecnicos"
+    ],
+    "numero_registros": 4583,
+    "numero_caracteristicas_numericas": 19,
+    "categorias": [
+        "backend",
+        "cloud",
+        "datascience",
+        "frontend"
+    ],
+    "random_state": 42,
+    "ratio_balance": 0.9459
+}
