@@ -29,9 +29,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleContenidoException(ContenidoException ex) {
         var detalle = new ErrorDetail(ex.getCodigo(), ex.getMessage(), ex.getCampo(), Instant.now());
 
-        HttpStatus status = ex.getCodigo() == CodigoError.ERROR_MODELO
-                ? HttpStatus.INTERNAL_SERVER_ERROR
-                : HttpStatus.BAD_REQUEST;
+        HttpStatus status = switch (ex.getCodigo()) {
+            case PREDICCION_RECHAZADA -> HttpStatus.UNPROCESSABLE_ENTITY;
+            case ERROR_MODELO -> HttpStatus.INTERNAL_SERVER_ERROR;
+            default -> HttpStatus.BAD_REQUEST;
+        };
 
         return ResponseEntity.status(status).body(new  ErrorResponse(detalle));
     }
