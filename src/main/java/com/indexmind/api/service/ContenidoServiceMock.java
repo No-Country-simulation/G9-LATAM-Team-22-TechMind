@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class ContenidoServiceMock implements ContenidoService {
     @Override
     public ContenidoResponse clasificar(ContenidoRequest request) {

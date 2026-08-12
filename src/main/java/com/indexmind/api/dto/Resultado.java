@@ -1,7 +1,11 @@
 package com.indexmind.api.dto;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 import java.util.List;
 
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record Resultado(
         // Bloque 1: identificación y estado
         String categoriaPredicha,

@@ -1,6 +1,7 @@
 package com.indexmind.api.client;
 
 import com.indexmind.api.dto.CodigoError;
+import com.indexmind.api.dto.ModeloHealthResponse;
 import com.indexmind.api.dto.PredictRequest;
 import com.indexmind.api.dto.PredictResponse;
 import com.indexmind.api.dto.Resumen;
@@ -33,6 +34,17 @@ public class ModeloDsClient {
                 .baseUrl(baseUrl)
                 .requestFactory(factory)
                 .build();
+    }
+
+    public ModeloHealthResponse consultarHealth() {
+        try {
+            return restClient.get()
+                    .uri("/health")
+                    .retrieve()
+                    .body(ModeloHealthResponse.class);
+        } catch (RestClientException ex) {
+            return null; // si el servidor en python está caido o da timeout
+        }
     }
 
     public PredictResponse consultarPrediccion(PredictRequest request){

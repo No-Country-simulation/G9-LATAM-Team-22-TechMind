@@ -19,7 +19,9 @@ public class GlobalExceptionHandler {
         FieldError primerError = ex.getFieldErrors().get(0);
         String campo = primerError.getField();
         String mensaje = primerError.getDefaultMessage(); // el mensaje de tu anotación @Size/@NotBlank
-        CodigoError error = mapearCodigo(campo, mensaje);
+        Object valorRechazado = primerError.getRejectedValue();
+
+        CodigoError error = mapearCodigo(campo, mensaje, valorRechazado);
 
         var detalle = new ErrorDetail(error, mensaje, campo, Instant.now());
         return ResponseEntity.badRequest().body(new ErrorResponse(detalle));
@@ -39,16 +41,33 @@ public class GlobalExceptionHandler {
     }
 
     private CodigoError getCodigo(String campo, String mensaje) {
-        return mapearCodigo(campo, mensaje);
+        return mapearCodigo(campo, mensaje, null);
     }
 
-    private CodigoError mapearCodigo(String campo, String mensaje){
+    private CodigoError mapearCodigo(String campo, String mensaje, Object valorRechazado){
         if(campo.equals("titulo")){
             return CodigoError.TITULO_MUY_LARGO;
         }
-        if(mensaje.contains("no puede estar vacio")){
+
+        String msgLower = mensaje != null ? mensaje.toLowerCase() : "";
+
+        // si el mensaje menciona explícitamente "vacío" o "vacio"
+        if(msgLower.contains("vacio") || msgLower.contains("vacío") || msgLower.contains("blank")) {
             return CodigoError.TEXTO_VACIO;
         }
+
+        // si falló la validación por tamaño, diferenciar por longitud del texto ingresado
+        if (valorRechazado instanceof String str) {
+            if (str.isBlank() || str.length() < 10) {
+                return CodigoError.TEXTO_VACIO;
+            }
+            if (str.length() > 5000) {
+                return CodigoError.TEXTO_MUY_LARGO;
+            }
+        }
+        /* if(mensaje.contains("no puede estar vacio")){
+            return CodigoError.TEXTO_VACIO;
+        } */
         return CodigoError.TEXTO_MUY_LARGO;
     }
 }
