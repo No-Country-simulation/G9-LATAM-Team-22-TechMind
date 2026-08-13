@@ -1,5 +1,6 @@
 package com.indexmind.api.client;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.indexmind.api.dto.CodigoError;
 import com.indexmind.api.dto.ModeloHealthResponse;
 import com.indexmind.api.dto.PredictRequest;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.ClientHttpRequestFactories;
 import org.springframework.boot.web.client.ClientHttpRequestFactorySettings;
 import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
@@ -22,7 +24,8 @@ public class ModeloDsClient {
     private final RestClient restClient;
 
     public ModeloDsClient(@Value("${ds.modelo.base-url}") String baseUrl,
-                          @Value("${ds.modelo.timeout-ms}") long timeoutMs) {
+                          @Value("${ds.modelo.timeout-ms}") long timeoutMs,
+                          ObjectMapper objectMapper) {
 
         ClientHttpRequestFactorySettings settings = ClientHttpRequestFactorySettings.DEFAULTS
                 .withConnectTimeout(Duration.ofMillis(timeoutMs))
@@ -33,6 +36,10 @@ public class ModeloDsClient {
         this.restClient = RestClient.builder()
                 .baseUrl(baseUrl)
                 .requestFactory(factory)
+                .messageConverters(converters -> {
+                    converters.removeIf(c -> c instanceof MappingJackson2HttpMessageConverter);
+                    converters.add(new MappingJackson2HttpMessageConverter(objectMapper));
+                })
                 .build();
     }
 
@@ -47,14 +54,14 @@ public class ModeloDsClient {
         }
     }
 
-    public PredictResponse consultarPrediccion(PredictRequest request){
-        try{
+    public PredictResponse consultarPrediccion(PredictRequest request) {
+        try {
             return restClient.post()
                     .uri("/predict")
                     .body(request)
                     .retrieve()
                     .body(PredictResponse.class);
-        }catch (RestClientException ex){
+        } catch (RestClientException ex) {
             throw new ContenidoException("No hay respuesta del modelo", CodigoError.ERROR_MODELO, null);
         }
     }

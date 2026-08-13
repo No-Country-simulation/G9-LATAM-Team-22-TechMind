@@ -38,6 +38,7 @@ public record Resultado(
         Integer featuresActivasTotal,
 
         List<String>advertencias,
-        String accionRecomendada
+        String accionRecomendada,
+        Explicacion explicacion
 ) {
 }

@@ -5,10 +5,13 @@ import com.indexmind.api.dto.*;
 import com.indexmind.api.exception.ContenidoException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
-public class ContenidoServiceImpl implements ContenidoService{
+public class ContenidoServiceImpl implements ContenidoService {
 
     private final ModeloDsClient modeloDsClient;
 
@@ -25,44 +28,50 @@ public class ContenidoServiceImpl implements ContenidoService{
 
     @Override
     public ContenidoResponse clasificar(ContenidoRequest request) {
-        // si el modelo no está listo/disponible, lanzar error 503/500
-        if(!modeloDisponible()) {
-            throw new ContenidoException("El modelo no está disponible", CodigoError.ERROR_MODELO, null);
+        PredictRequest predictRequest = new PredictRequest(Collections.singletonList(request.texto()), true, 15, 4);
+        PredictResponse predictResponse = modeloDsClient.consultarPrediccion(predictRequest);
+
+        if (predictResponse.resultados().isEmpty()) {
+            throw new ContenidoException("El modelo invalido la respuesta", CodigoError.RESPUESTA_MODELO_INVALIDA, null);
         }
 
-        // construir la petición hacia Python (PredictRequest)
-        PredictRequest predictRequest = new PredictRequest(
-                List.of(request.texto()),
-                true, // incluirExplicación
-                5, // topNExplicacion
-                1 // topK
-        );
+        var resultado = predictResponse.resultados().get(0);
 
-        // consultar el modelo (ModeloDsClient ya captura timeouts/fallos de conexión y lanza ERROR_MODELO)
-        PredictResponse response = modeloDsClient.consultarPrediccion(predictRequest);
-
-        // validar que la respuesta contenga datos validos
-        validarRespuestaModelo(response);
-
-        Resultado resultado = response.resultados().get(0);
-
-        // validar si la predicción fue rechazada por el modelo
-        if(!resultado.prediccionUtilizable() || "rechazada".equalsIgnoreCase(resultado.estado())) {
-            throw new ContenidoException(
-                    "El modelo rechazó el procesamiento del texto: " + resultado.validationMessage(),
-                    CodigoError.PREDICCION_RECHAZADA,
-                    "texto"
-            );
+        if (!resultado.prediccionUtilizable()) {
+            throw new ContenidoException("El modelo rechazo el procesamiento del texto: " + resultado.validationMessage(), CodigoError.PREDICCION_RECHAZADA, "texto");
         }
 
-        // mapeo temporal
-        float probabilidad = resultado.puntuacionGanadora() != null ? resultado.puntuacionGanadora().floatValue() : 0.0f;
-        return new ContenidoResponse(resultado.categoriaPredicha(), probabilidad, List.of());
+        var categoria = resultado.categoriaPredicha();
+        var probabilidad = (float) Math.max(0.0, Math.min(1.0, resultado.puntuacionGanadora()));
+        var informacionAdicional = extraerInformacionAdicional(resultado, request.texto());
+        var response = new ContenidoResponse(categoria, probabilidad, informacionAdicional);
+        return response;
     }
 
-    private void validarRespuestaModelo(PredictResponse response) {
-        if (response == null || response.resultados() == null || response.resultados().isEmpty()) {
-            throw new ContenidoException("La respuesta del modelo fue nula o malformada", CodigoError.RESPUESTA_MODELO_INVALIDA, null);
+    private List<String> extraerInformacionAdicional(Resultado resultado, String textoOriginal) {
+        if (resultado.explicacion() == null) {
+            return List.of();
         }
+
+        List<Termino> terminos = resultado.explicacion().positiveTerms();
+
+        List<String> palabrasWord = terminos.stream()
+                .filter(t -> t.featureType().equals("word"))
+                .map(t -> t.term())
+                .toList();
+
+        List<String> palabrasChar = terminos.stream()
+                .filter(t -> t.featureType().equals("char"))
+                .map(t -> t.term())
+                .filter(t -> t.length() >= 5)
+                .filter(t -> textoOriginal.contains(t))
+                .toList();
+
+        return Stream.concat(palabrasWord.stream(), palabrasChar.stream())
+                .collect(Collectors.toMap(String::toLowerCase, t -> t, (existente, nuevo) -> existente))
+                .values()
+                .stream()
+                .toList();
     }
 }
+
