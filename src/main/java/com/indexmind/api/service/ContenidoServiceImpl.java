@@ -74,4 +74,3 @@ public class ContenidoServiceImpl implements ContenidoService {
                 .toList();
     }
 }
-

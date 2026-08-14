@@ -1,0 +1,104 @@
+package com.indexmind.api.service;
+
+import com.indexmind.api.client.*;
+import com.indexmind.api.dto.*;
+import com.indexmind.api.exception.ContenidoException;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Collections;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+class ContenidoServiceImplTest {
+
+    @Mock
+    private ModeloDsClient modeloDsClient;
+
+    @Test
+    @DisplayName("Debe devolver un ContenidoResponse cuando el modelo clasifica correctamente")
+    void clasificar_RespuestaExitosa_DevuelveContenidoResponse() {
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+        var resultadoAceptadoMock = crearResultadoBase(true);
+        PredictResponse response = new PredictResponse(new Resumen("test-request-id"), Collections.singletonList(resultadoAceptadoMock));
+        when(modeloDsClient.consultarPrediccion(any())).thenReturn(response);
+        ContenidoResponse resultado = service.clasificar(new ContenidoRequest("Titulo de prueba", "Un texto de prueba con más de diez caracteres."));
+        assertThat(resultado.categoria()).isEqualTo("backend");
+        assertThat(resultado.probabilidad()).isEqualTo(0.35f);
+        assertThat(resultado.informacionAdicional()).isEmpty();
+    }
+
+    private Resultado crearResultadoBase(boolean prediccionUtilizable){
+        return new Resultado(
+                "backend",          // categoriaPredicha
+                "cloud",                  // segundaCategoria
+                "aceptada",     // estado
+                false,                   // requiereRevision
+                prediccionUtilizable,                  // prediccionUtilizable
+
+                0.35,                    // puntuacionGanadora
+                0.0,                    // puntuacionSegunda
+                0.0,                    // margenDecision
+                "Bajo",                 // nivelMargen
+
+                12,                     // characters (texto muy corto)
+                2,                      // words
+                true,                  // validInput
+                "Inferencia completada.", // validationMessage
+
+                0,                      // terminosActivos
+                0,                      // wordFeaturesActivas
+                0,                      // charFeaturesActivas
+                0,                      // featuresActivasTotal
+
+                List.of("La cobertura depende únicamente de n-gramas de caracteres."), // advertencias
+                "Predicción utilizable automáticamente",             // accionRecomendada
+                null                    // explicacion
+        );
+    }
+
+    @Test
+    @DisplayName("Debe lanzar RESPUESTA_MODELO_INVALIDA cuando el modelo no devuelve resultados")
+    void clasificar_ResultadosVacio_LanzaRespuestaModeloInvalida(){
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+        PredictResponse response = new PredictResponse(
+                new Resumen("test-request-id"),
+                Collections.emptyList() // <-- la clave del test
+        );
+        when(modeloDsClient.consultarPrediccion(any())).thenReturn(response);
+        ContenidoException ex = assertThrows(ContenidoException.class, () -> service.clasificar(new ContenidoRequest("Titulo", "Un texto valido de prueba")));
+        assertThat(ex.getCodigo()).isEqualTo(CodigoError.RESPUESTA_MODELO_INVALIDA);
+    }
+
+    @Test
+    @DisplayName("Debe lanzar PREDICCION_RECHAZADA cuando el modelo marca la predicción como no utilizable")
+    void clasificar_PrediccionNoUtilizable_LanzaPrediccionRechazada(){
+        Resultado resultado = crearResultadoBase(false);
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+        PredictResponse response = new PredictResponse(
+                new Resumen("test-request-id"),
+                Collections.singletonList(resultado)
+        );
+        when(modeloDsClient.consultarPrediccion(any())).thenReturn(response);
+        ContenidoException ex = assertThrows(ContenidoException.class, () -> service.clasificar(new ContenidoRequest("Titulo", "Un texto valido de prueba")));
+        assertThat(ex.getCampo()).isEqualTo("texto");
+        assertThat(ex.getCodigo()).isEqualTo(CodigoError.PREDICCION_RECHAZADA);
+    }
+
+    @Test
+    @DisplayName("Debe propagar ERROR_MODELO cuando el cliente del modelo falla")
+    void clasificar_ClienteLanzaErrorModelo_PropagaExcepcion(){
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+        when(modeloDsClient.consultarPrediccion(any())).thenThrow(new ContenidoException("No hay respuesta del modelo", CodigoError.ERROR_MODELO, null));
+        ContenidoException ex = assertThrows(ContenidoException.class, () -> service.clasificar(new ContenidoRequest("Titulo", "Un texto valido de prueba")));
+        assertThat(ex.getCodigo()).isEqualTo(CodigoError.ERROR_MODELO);
+    }
+}

@@ -54,6 +54,7 @@ class ContenidoControllerTest {
     }
 
     @Test
+    @DisplayName("Debe devolver 400 con código TEXTO_VACIO cuando el texto está vacío")
     void textoVacioDevuelve400ConCodigoTextoVacio() throws Exception {
         var request = new ContenidoRequest("Titulo valido", "");
 
@@ -66,6 +67,7 @@ class ContenidoControllerTest {
     }
 
     @Test
+    @DisplayName("Debe devolver 400 con código TEXTO_MUY_LARGO cuando el texto excede el máximo permitido")
     void textoMuyLargoDevuelve400() throws Exception {
         var request = new ContenidoRequest("Titulo valido", "a".repeat(5001));
 
@@ -78,6 +80,7 @@ class ContenidoControllerTest {
     }
 
     @Test
+    @DisplayName("Debe devolver 400 con código TITULO_MUY_LARGO cuando el título excede el máximo permitido")
     void tituloMuyLargoDevuelve400() throws Exception {
         var request = new ContenidoRequest("a".repeat(201), "Este es un texto válido para clasificar contenido en el backend.");
 
