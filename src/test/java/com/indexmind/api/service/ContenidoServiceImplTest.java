@@ -150,4 +150,40 @@ class ContenidoServiceImplTest {
         assertThat(disponible).isFalse();
     }
 
+
+    @Test
+    @DisplayName("Debe deduplicar fragmentos con espacios y filtrar stopwords en información adicional")
+    void clasificar_ConDuplicadosYStopwords_DevuelveInformacionLimpia() {
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+
+        List<Termino> positiveTerms = List.of(
+                new Termino("pring ", "char", 0.0, 0.0, 0.0),
+                new Termino("pring", "char", 0.0, 0.0, 0.0),
+                new Termino("este", "word", 0.0, 0.0, 0.0)
+        );
+
+        Explicacion explicacion = new Explicacion(positiveTerms, List.of(), List.of(), "warning");
+
+        Resultado resultadoMock = new Resultado(
+                "backend", "cloud", "aceptada", false, true,
+                0.45, 0.0, 0.0, "Media",
+                132, 21, true, "Inferencia completada.",
+                0, 0, 0, 0,
+                List.of(), "Predicción utilizable automáticamente",
+                explicacion
+        );
+
+        PredictResponse response = new PredictResponse(new Resumen("test-id"), List.of(resultadoMock));
+        when(modeloDsClient.consultarPrediccion(any())).thenReturn(response);
+
+        ContenidoRequest request = new ContenidoRequest(
+                "titulo",
+                "En este contenido se presentan los conceptos básicos para la creación de APIs REST utilizando Java y Spring Boot."
+        );
+
+        ContenidoResponse resultado = service.clasificar(request);
+
+        assertThat(resultado.informacionAdicional()).containsExactly("Spring");
+        assertThat(resultado.informacionAdicional()).doesNotContain("este", "Este");
+    }
 }
