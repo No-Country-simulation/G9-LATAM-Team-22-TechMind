@@ -101,4 +101,53 @@ class ContenidoServiceImplTest {
         ContenidoException ex = assertThrows(ContenidoException.class, () -> service.clasificar(new ContenidoRequest("Titulo", "Un texto valido de prueba")));
         assertThat(ex.getCodigo()).isEqualTo(CodigoError.ERROR_MODELO);
     }
+
+    @Test
+    @DisplayName("Debe devolver true cuando el modelo está disponible")
+    void modeloDisponible_ModeloListo_DevuelveTrue() {
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+
+        ModeloHealthResponse health = new ModeloHealthResponse(
+                "ok",
+                true,
+                "1.0.0",
+                30000,
+                30000,
+                60000
+        );
+
+        when(modeloDsClient.consultarHealth()).thenReturn(health);
+        boolean disponible = service.modeloDisponible();
+        assertThat(disponible).isTrue();
+    }
+
+    @Test
+    @DisplayName("Debe devolver false cuando el modelo no está listo")
+    void modeloDisponible_ModeloNoListo_DevuelveFalse() {
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+
+        ModeloHealthResponse health = new ModeloHealthResponse(
+                "ok",
+                false,
+                "1.0.0",
+                30000,
+                30000,
+                6000
+        );
+
+        when(modeloDsClient.consultarHealth()).thenReturn(health);
+        boolean disponible = service.modeloDisponible();
+        assertThat(disponible).isFalse();
+    }
+
+    @Test
+    @DisplayName("Debe devolver false cuando el modelo no responde")
+    void modeloDisponible_ModeloNoResponde_DevuelveFalse() {
+        ContenidoServiceImpl service = new ContenidoServiceImpl(modeloDsClient);
+
+        when(modeloDsClient.consultarHealth()).thenReturn(null);
+        boolean disponible = service.modeloDisponible();
+        assertThat(disponible).isFalse();
+    }
+
 }
