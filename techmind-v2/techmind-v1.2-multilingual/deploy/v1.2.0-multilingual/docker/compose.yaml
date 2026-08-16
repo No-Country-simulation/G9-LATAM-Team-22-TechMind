@@ -1,0 +1,23 @@
+services:
+  techmind:
+    build:
+      context: ../../..
+      dockerfile: deploy/v1.2.0-multilingual/docker/Dockerfile
+
+    image: techmind:v1.2.0-multilingual
+
+    container_name: techmind-v12
+
+    ports:
+      - "${TECHMIND_PORT:-8000}:8000"
+
+    environment:
+      TECHMIND_V12_MODEL_PATH: /app/models/experimental/v1.2.0-multilingual/techmind_hybrid_v1_2_0_multilingual.joblib
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      TOKENIZERS_PARALLELISM: "false"
+
+    restart: unless-stopped
+
+    init: true
