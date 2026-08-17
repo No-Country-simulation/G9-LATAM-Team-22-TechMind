@@ -1,5 +1,6 @@
 package com.indexmind.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -14,6 +15,8 @@ public record PredictionV12(
         String prediction,
         String secondCategory,
         Double decisionMargin,
+
+        @JsonProperty("domain_similarity_5nn")
         Double domainSimilarity5nn,
         int tfidfActiveFeatures,
         String reason,
