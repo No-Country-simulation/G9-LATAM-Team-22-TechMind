@@ -14,6 +14,8 @@ public record ContenidoResponse(
         float probabilidad,
 
         @Schema(description = "Información adicional o palabras clave identificadas")
-        List<String> informacionAdicional
+        List<String> informacionAdicional,
+
+        boolean requiereRevision // NUEVO
 ) {
 }

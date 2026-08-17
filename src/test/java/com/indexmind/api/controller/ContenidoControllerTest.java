@@ -40,7 +40,7 @@ class ContenidoControllerTest {
         ContenidoRequest request = new ContenidoRequest("Prueba de API", "Este es un texto válido para clasificar contenido en el backend.");
 
         // mock de la respuesta esperada del servicio
-        ContenidoResponse responseMock = new ContenidoResponse("Backend", 0.89F, List.of("Java", "Spring Boot"));
+        ContenidoResponse responseMock = new ContenidoResponse("Backend", 0.89F, List.of("Java", "Spring Boot"), false);
         when(service.clasificar(any(ContenidoRequest.class))).thenReturn(responseMock);
 
         // petición POST a /api/v1/contenido

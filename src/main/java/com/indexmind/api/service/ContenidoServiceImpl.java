@@ -3,6 +3,7 @@ package com.indexmind.api.service;
 import com.indexmind.api.client.ModeloDsClient;
 import com.indexmind.api.dto.*;
 import com.indexmind.api.exception.ContenidoException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
+@Profile("v11")
 public class ContenidoServiceImpl implements ContenidoService {
 
     private static final Set<String> stopWords = Set.of(
@@ -56,7 +58,7 @@ public class ContenidoServiceImpl implements ContenidoService {
         var categoria = resultado.categoriaPredicha();
         var probabilidad = (float) Math.max(0.0, Math.min(1.0, resultado.puntuacionGanadora()));
         var informacionAdicional = extraerInformacionAdicional(resultado, request.texto());
-        var response = new ContenidoResponse(categoria, probabilidad, informacionAdicional);
+        var response = new ContenidoResponse(categoria, probabilidad, informacionAdicional, false);
         return response;
     }
 
