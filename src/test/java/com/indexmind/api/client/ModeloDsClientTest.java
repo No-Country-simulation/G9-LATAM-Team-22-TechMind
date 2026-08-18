@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
 
@@ -70,7 +71,7 @@ class ModeloDsClientTest {
                     }
                     """;
             exchange.getResponseHeaders().add("Content-Type", "application/json");
-            byte[] bytes = json.getBytes();
+            byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
             exchange.sendResponseHeaders(200, bytes.length);
             exchange.getResponseBody().write(bytes);
             exchange.getResponseBody().close();
