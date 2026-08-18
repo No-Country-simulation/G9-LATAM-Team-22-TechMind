@@ -94,6 +94,37 @@ paths:
                       mensaje: "El campo 'texto' excede la longitud máxima permitida de 5000 caracteres."
                       campo: "texto"
                       timestamp: "2026-07-20T15:33:00Z"
+                titulo_muy_largo:
+                  summary: Título excede longitud máxima
+                  value:
+                    error:
+                      codigo: "TITULO_MUY_LARGO"
+                      mensaje: "El titulo no debe exceder de los 200 caracteres"
+                      campo: "titulo"
+                      timestamp: "2026-08-18T20:00:00Z"
+                respuesta_modelo_invalida:
+                  summary: El modelo no devolvió resultados
+                  value:
+                    error:
+                      codigo: "RESPUESTA_MODELO_INVALIDA"
+                      mensaje: "El modelo invalido la respuesta"
+                      campo: null
+                      timestamp: "2026-08-18T20:00:00Z"
+        '422':
+          description: El modelo procesó el texto pero rechazó la predicción por baja confiabilidad
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                prediccion_rechazada:
+                  summary: El modelo no pudo emitir una predicción utilizable
+                  value:
+                    error:
+                      codigo: "PREDICCION_RECHAZADA"
+                      mensaje: "El modelo rechazó el procesamiento del texto: <mensaje de validación>"
+                      campo: "texto"
+                      timestamp: "2026-08-18T20:00:00Z"
         '500':
           description: Error interno del servidor o del modelo
           content:
@@ -168,6 +199,7 @@ components:
         - categoria
         - probabilidad
         - informacion_adicional
+        - requiere_revision
       properties:
         categoria:
           type: string
@@ -188,8 +220,14 @@ components:
             modelo no detecte información adicional relevante.
           items:
             type: string
-          example: ["Java", "Spring Boot", "API REST"]
-
+          example: [ "Java", "Spring Boot", "API REST" ]
+        requiere_revision:
+          type: boolean
+          description: >
+            Indica si la predicción requiere revisión manual antes de
+            confiar en ella completamente. En la versión actual del modelo,
+            este campo siempre es false.
+          example: false
     HealthResponse:
       type: object
       required:
@@ -230,6 +268,7 @@ components:
                 - TITULO_MUY_LARGO
                 - ERROR_MODELO
                 - RESPUESTA_MODELO_INVALIDA
+                - PREDICCION_RECHAZADA
               example: "TEXTO_VACIO"
             mensaje:
               type: string
