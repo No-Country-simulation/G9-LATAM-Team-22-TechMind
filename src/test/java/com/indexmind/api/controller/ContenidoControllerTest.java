@@ -49,7 +49,7 @@ class ContenidoControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.categoria").value("Backend"))
-                .andExpect(jsonPath("$.probabilidad").value(0.89))
+                .andExpect(jsonPath("$.score").value(0.89))
                 .andExpect(jsonPath("$.informacion_adicional[0]").value("Java"));
     }
 

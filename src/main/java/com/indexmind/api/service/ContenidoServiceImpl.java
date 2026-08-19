@@ -56,9 +56,9 @@ public class ContenidoServiceImpl implements ContenidoService {
         }
 
         var categoria = resultado.categoriaPredicha();
-        var probabilidad = (float) Math.max(0.0, Math.min(1.0, resultado.puntuacionGanadora()));
+        var score = (float) Math.max(0.0, Math.min(1.0, resultado.puntuacionGanadora()));
         var informacionAdicional = extraerInformacionAdicional(resultado, request.texto());
-        var response = new ContenidoResponse(categoria, probabilidad, informacionAdicional, false);
+        var response = new ContenidoResponse(categoria, score, informacionAdicional, false);
         return response;
     }
 

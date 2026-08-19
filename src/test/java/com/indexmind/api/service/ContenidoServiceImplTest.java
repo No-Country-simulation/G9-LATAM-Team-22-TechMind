@@ -32,7 +32,7 @@ class ContenidoServiceImplTest {
         when(modeloDsClient.consultarPrediccion(any())).thenReturn(response);
         ContenidoResponse resultado = service.clasificar(new ContenidoRequest("Titulo de prueba", "Un texto de prueba con más de diez caracteres."));
         assertThat(resultado.categoria()).isEqualTo("backend");
-        assertThat(resultado.probabilidad()).isEqualTo(0.35f);
+        assertThat(resultado.score()).isEqualTo(0.35f);
         assertThat(resultado.informacionAdicional()).isEmpty();
     }
 

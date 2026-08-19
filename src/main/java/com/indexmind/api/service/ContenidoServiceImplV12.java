@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @Profile("v12")
@@ -43,11 +45,11 @@ public class ContenidoServiceImplV12 implements ContenidoService {
         var resultado = predictResponse.predictions().get(0);
 
         return switch (resultado.decision()) {
-            case "accepted" -> construirRespuesta(resultado, false);
-            case "review" -> construirRespuesta(resultado, true);
+            case "accepted" -> construirRespuesta(resultado, request.texto(), false);
+            case "review" -> construirRespuesta(resultado, request.texto() ,true);
             case "rejected_ood", "rejected_invalid" -> throw new ContenidoException(
                     "El modelo rechazó la clasificación: " + resultado.reason(),
-                    CodigoError.PREDICCION_RECHAZADA_OOD, // ⚠️ confirmar nombre exacto (OOD vs ODD) con tu compañero
+                    CodigoError.PREDICCION_RECHAZADA_OOD,
                     "texto"
             );
             default -> throw new ContenidoException(
@@ -58,19 +60,36 @@ public class ContenidoServiceImplV12 implements ContenidoService {
         };
     }
 
-    private ContenidoResponse construirRespuesta(PredictionV12 resultado, boolean requiereRevision) {
+    private ContenidoResponse construirRespuesta(PredictionV12 resultado, String texto, boolean requiereRevision) {
         var categoria = resultado.prediction();
-        var probabilidad = resultado.scoreTop1() != null ? resultado.scoreTop1().floatValue() : 0f; // TODO: sigue sin ser una probabilidad real, ver sección 5.3 de la guía
-        var informacionAdicional = extraerInformacionAdicional(resultado);
-        return new ContenidoResponse(categoria, probabilidad, informacionAdicional, requiereRevision);
+        var score = resultado.scoreTop1() != null ? resultado.scoreTop1().floatValue() : 0f; // TODO: sigue sin ser una score real, ver sección 5.3 de la guía
+        var informacionAdicional = extraerInformacionAdicional(resultado, texto);
+        return new ContenidoResponse(categoria, score, informacionAdicional, requiereRevision);
     }
 
-    private List<String> extraerInformacionAdicional(PredictionV12 resultado) {
+    private List<String> extraerInformacionAdicional(PredictionV12 resultado, String textoOriginal) {
         if (resultado.explanation() == null || !resultado.explanation().available()) {
             return List.of();
         }
-        return resultado.explanation().terms().stream()
-                .map(ExplanationTermV12::feature)
+
+        List<String> palabrasWord = resultado.explanation().terms().stream()
+                .filter(t -> t.feature().startsWith("word__"))
+                .map(t -> t.feature().substring("word__".length()))
+                .toList();
+
+        List<String> palabrasChar = resultado.explanation().terms().stream()
+                .filter(t -> t.feature().startsWith("char__"))
+                .map(t -> t.feature().substring("char__".length()).trim())
+                .filter(t -> t.length() >= 5)
+                .filter(textoOriginal.toLowerCase()::contains)
+                .toList();
+
+        return Stream.concat(palabrasWord.stream(), palabrasChar.stream())
+                .collect(Collectors.toMap(String::toLowerCase, t -> t, (existente, nuevo) -> existente))
+                .values()
+                .stream()
                 .toList();
     }
+
+
 }
