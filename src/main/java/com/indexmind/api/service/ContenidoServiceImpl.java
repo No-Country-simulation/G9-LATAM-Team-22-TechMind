@@ -3,6 +3,8 @@ package com.indexmind.api.service;
 import com.indexmind.api.client.ModeloDsClient;
 import com.indexmind.api.dto.*;
 import com.indexmind.api.exception.ContenidoException;
+import com.indexmind.api.util.StopWords;
+import com.indexmind.api.util.TextUtils;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +18,6 @@ import java.util.stream.Stream;
 @Service
 @Profile("v11")
 public class ContenidoServiceImpl implements ContenidoService {
-
-    private static final Set<String> stopWords = Set.of(
-            "el", "la", "los", "las", "un", "una", "unos", "unas", "del", "al",
-            "de", "en", "con", "por", "para", "sin", "sobre", "entre", "desde", "hasta",
-            "y", "o", "pero", "si", "que", "como", "cuando", "donde",
-            "su", "sus", "esto", "esta", "este", "estos", "estas", "eso", "esa", "ese",
-            "es", "son", "ser", "estar", "hay", "tiene", "puede", "permite",
-            "utilizando", "utiliza", "usando", "usa", "creacion", "crear",
-            "contenido", "texto", "material", "explica", "presenta", "muestra"
-    );
 
     private final ModeloDsClient modeloDsClient;
 
@@ -81,7 +73,7 @@ public class ContenidoServiceImpl implements ContenidoService {
                 .toList();
 
         return Stream.concat(palabrasWord.stream(), palabrasChar.stream())
-                .filter(t -> !stopWords.contains(eliminarAcentos(t.toLowerCase())))
+                .filter(t -> !StopWords.ESPANOL.contains(TextUtils.eliminarAcentos(t.toLowerCase())))
                 .collect(Collectors.toMap(t -> t.toLowerCase().trim(), t -> t.trim(), (existente, nuevo) -> existente))
                 .values()
                 .stream()
@@ -98,12 +90,5 @@ public class ContenidoServiceImpl implements ContenidoService {
             return matcher.group(); // devuelve la palabra tal cual está escrita en el texto original
         }
         return null; // si no se encuentra, lo descartamos
-    }
-
-    private String eliminarAcentos(String textoOriginal){
-        String textoDescompuesto = Normalizer.normalize(textoOriginal, Normalizer.Form.NFD);
-        Pattern patronAcentos = Pattern.compile("\\p{M}");
-        String textoLimpio = patronAcentos.matcher(textoDescompuesto).replaceAll("");
-        return textoLimpio;
     }
 }
