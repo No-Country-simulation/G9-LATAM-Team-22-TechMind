@@ -3,11 +3,17 @@ package com.indexmind.api.service;
 import com.indexmind.api.client.ModeloDsClientV12;
 import com.indexmind.api.dto.*;
 import com.indexmind.api.exception.ContenidoException;
+import com.indexmind.api.util.StopWords;
+import com.indexmind.api.util.TextUtils;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -72,24 +78,38 @@ public class ContenidoServiceImplV12 implements ContenidoService {
             return List.of();
         }
 
-        List<String> palabrasWord = resultado.explanation().terms().stream()
+        List<ExplanationTermV12> features = resultado.explanation().terms();
+
+        List<String> palabrasWord = features.stream()
                 .filter(t -> t.feature().startsWith("word__"))
                 .map(t -> t.feature().substring("word__".length()))
                 .toList();
 
-        List<String> palabrasChar = resultado.explanation().terms().stream()
+        List<String> palabrasChar = features.stream()
                 .filter(t -> t.feature().startsWith("char__"))
                 .map(t -> t.feature().substring("char__".length()).trim())
-                .filter(t -> t.length() >= 5)
-                .filter(textoOriginal.toLowerCase()::contains)
+                .map(t -> extraerPalabraCompleta(t, textoOriginal))
+                .filter(t -> Objects.nonNull(t))
                 .toList();
 
         return Stream.concat(palabrasWord.stream(), palabrasChar.stream())
-                .collect(Collectors.toMap(String::toLowerCase, t -> t, (existente, nuevo) -> existente))
+                .filter(t -> !StopWords.ESPANOL.contains(TextUtils.eliminarAcentos(t.toLowerCase())))
+                .collect(Collectors.toMap(t -> t.toLowerCase().trim(), t -> t.trim(), (existente, nuevo) -> existente))
                 .values()
                 .stream()
                 .toList();
     }
 
+    private String extraerPalabraCompleta(String fragmentoChar, String textoOriginal) {
+        Pattern pattern = Pattern.compile(
+                "\\b\\w*" + Pattern.quote(fragmentoChar.trim()) + "\\w*\\b",
+                Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS
+        );
+        Matcher matcher = pattern.matcher(textoOriginal);
+        if (matcher.find()) {
+            return matcher.group(); // devuelve la palabra tal cual está escrita en el texto original
+        }
+        return null; // si no se encuentra, lo descartamos
+    }
 
 }
