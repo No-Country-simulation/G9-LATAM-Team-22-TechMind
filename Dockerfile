@@ -13,8 +13,5 @@ COPY --from=build /app/target/*.jar app.jar
 # Si el comodín falla por ambigüedad, usa el nombre exacto en su lugar, ej:
 # COPY --from=build /app/target/indexmind-api-1.0.0.jar app.jar
 
-# Perfil activo para el modelo 1.2
-ENV SPRING_PROFILES_ACTIVE=v12
-
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
