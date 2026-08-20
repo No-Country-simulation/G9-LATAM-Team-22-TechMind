@@ -27,7 +27,7 @@ paths:
       description: >
         Recibe un texto técnico (con título opcional) y lo procesa mediante
         el modelo de clasificación desarrollado por el equipo de Ciencia de
-        Datos. Devuelve la categoría más probable, la probabilidad asociada
+        Datos. Devuelve la categoría más probable, el score asociado
         y un listado de información adicional relevante (tecnologías,
         conceptos clave, etc.). No crea ni persiste ningún recurso.
       requestBody:
@@ -62,15 +62,15 @@ paths:
                 ejemplo_backend:
                   summary: Resultado para texto de Spring Boot
                   value:
-                    categoria: "Backend"
-                    probabilidad: 0.89
+                    categoria: "backend"
+                    score: 0.89
                     informacion_adicional: ["Java", "Spring Boot", "API REST"]
                 ejemplo_sin_tags:
                   summary: Resultado sin información adicional detectada
                   value:
-                    categoria: "General"
-                    probabilidad: 0.42
-                    informacion_adicional: []
+                    categoria: "cloud"
+                    score: 0.42
+                    informacion_adicional: [ ]
         '400':
           description: Error de validación en los datos de entrada
           content:
@@ -197,20 +197,22 @@ components:
       type: object
       required:
         - categoria
-        - probabilidad
+        - score
         - informacion_adicional
         - requiere_revision
       properties:
         categoria:
           type: string
           description: Categoría principal identificada por el modelo.
-          example: "Backend"
-        probabilidad:
+          example: "backend"
+        score:
           type: number
           format: float
-          minimum: 0.0
-          maximum: 1.0
-          description: Nivel de confianza del modelo para la categoría devuelta.
+          description: >
+            Puntuación de confianza cruda emitida por el clasificador
+            (score de decisión, no una probabilidad calibrada). El rango
+            y la interpretación pueden variar según la versión del modelo
+            activa.
           example: 0.89
         informacion_adicional:
           type: array
