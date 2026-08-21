@@ -1,0 +1,13 @@
+fastapi==0.141.1
+uvicorn==0.52.1
+pydantic==2.13.4
+numpy==1.26.4
+scipy==1.17.1
+scikit-learn==1.9.0
+joblib==1.5.3
+sentence-transformers==5.7.0
+transformers==5.15.0
+huggingface-hub==1.27.0
+tokenizers==0.22.2
+safetensors==0.8.0
+torch==2.13.0
