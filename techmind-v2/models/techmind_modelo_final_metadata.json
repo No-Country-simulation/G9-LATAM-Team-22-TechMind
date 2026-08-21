@@ -1,0 +1,43 @@
+{
+    "proyecto": "TechMind v2.0",
+    "estado": "Modelo final evaluado",
+    "modelo": "TF-IDF + SGDClassifier optimizado",
+    "tipo_entrada": "Solo texto",
+    "variante_textual": "texto_combinado_ponderado",
+    "clasificador": "SGDClassifier",
+    "vectorizador": "TfidfVectorizer",
+    "numero_features_tfidf": 30000,
+    "categorias": [
+        "backend",
+        "cloud",
+        "datascience",
+        "frontend"
+    ],
+    "registros_entrenamiento": 3666,
+    "registros_prueba_reservados": 917,
+    "f1_macro_cv": 0.8432224238703567,
+    "desviacion_f1_macro_cv": 0.011568444300989791,
+    "f1_macro_entrenamiento": 1.0,
+    "brecha_train_cv": 0.15677757612964327,
+    "diagnostico_brecha": "Brecha alta: evidencia de sobreajuste",
+    "hiperparametros_optimizados": {
+        "clasificador__alpha": 3e-05,
+        "clasificador__loss": "hinge",
+        "tfidf__min_df": 1,
+        "tfidf__ngram_range": [
+            1,
+            2
+        ],
+        "tfidf__sublinear_tf": true
+    },
+    "random_state": 42,
+    "conjunto_prueba_utilizado": true,
+    "accuracy_test": 0.8386041439476554,
+    "precision_macro_test": 0.8444900965351991,
+    "recall_macro_test": 0.838527469829268,
+    "f1_macro_test": 0.8401134859255158,
+    "f1_weighted_test": 0.8396773972801306,
+    "diferencia_f1_test_cv": -0.003108937944840906,
+    "diagnostico_generalizacion": "Generalización consistente",
+    "resultado_final_aprobado": true
+}

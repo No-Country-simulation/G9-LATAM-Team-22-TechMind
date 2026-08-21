@@ -1,0 +1,23 @@
+﻿Prueba,Resultado,Detalle,Severidad
+Dataset no vacío,APROBADA,"4,583 registros disponibles.",-
+Columnas requeridas,APROBADA,Todas las columnas requeridas están presentes.,-
+Categorías esperadas,APROBADA,"Categorías encontradas: ['backend', 'cloud', 'datascience', 'frontend']. Desconocidas: []. Ausentes: [].",-
+Objetivo sin valores nulos,APROBADA,Valores nulos en categoría: 0.,-
+Objetivo sin valores vacíos,APROBADA,Valores vacíos en categoría: 0.,-
+Balance de clases,APROBADA,Ratio minoritaria/mayoritaria: 0.946. Diferencia máxima: 63 registros.,-
+Características numéricas,APROBADA,Todas numéricas: True. Nulos: 0. Infinitos: 0.,-
+Ausencia de valores negativos,APROBADA,No se detectaron valores negativos.,-
+Proporciones entre cero y uno,APROBADA,"Todas las proporciones están dentro del rango [0, 1].",-
+Indicadores binarios válidos,APROBADA,Todos los indicadores contienen únicamente 0 y 1.,-
+Sin duplicados textuales,APROBADA,Registros en grupos textuales duplicados: 0.,-
+Sin etiquetas contradictorias,APROBADA,Textos asociados con varias categorías: 0.,-
+Sin filas completamente duplicadas,APROBADA,Filas completamente duplicadas: 0.,-
+Listas de palabras clave válidas,APROBADA,Listas inválidas: 0. Registros con elementos inválidos: 0.,-
+Sin keywords duplicadas internas,APROBADA,Registros con duplicados internos: 0.,-
+Conteo de keywords consistente,APROBADA,Registros con conteos inconsistentes: 0.,-
+Ausencia de variables constantes,REVISAR,"Variables constantes: ['cantidad_etiquetas_html', 'tiene_html']",ADVERTENCIA
+Revisión de variables casi constantes,APROBADA,No se detectaron variables casi constantes.,-
+Análisis de valores atípicos,APROBADA,Los valores atípicos fueron identificados para auditoría; no se eliminaron automáticamente.,-
+Variables textuales principales válidas,APROBADA,Problemas en variables principales: 0.,-
+Variables textuales opcionales válidas,APROBADA,Problemas estructurales en variables opcionales: 0.,-
+Variable experimental solo texto,APROBADA,Problemas estructurales: 0. Registros vacíos: 0.,-

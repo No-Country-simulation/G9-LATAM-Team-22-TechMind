@@ -1,0 +1,7 @@
+﻿Métrica,Valor
+Accuracy Test,0.8386041439476554
+Precision Macro Test,0.8444900965351991
+Recall Macro Test,0.838527469829268
+F1 Macro Test,0.8401134859255158
+F1 Weighted Test,0.8396773972801306
+F1 Macro CV,0.8432

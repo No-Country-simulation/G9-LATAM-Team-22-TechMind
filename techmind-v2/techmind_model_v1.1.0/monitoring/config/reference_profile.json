@@ -1,0 +1,84 @@
+{
+    "profile_version": "1.0.0",
+    "created_at": "2026-08-06T03:21:57+00:00",
+    "source": "Conjunto reservado de prueba procesado por el modelo final.",
+    "documents": 917,
+    "category_distribution": {
+        "backend": 0.28680479825517996,
+        "cloud": 0.24972737186477645,
+        "datascience": 0.21701199563794984,
+        "frontend": 0.24645583424209377,
+        "__rechazada__": 0.0
+    },
+    "status_distribution": {
+        "aceptada": 0.6815703380588877,
+        "revision": 0.31842966194111233,
+        "rechazada": 0.0
+    },
+    "rates": {
+        "accepted": 0.6815703380588877,
+        "review": 0.31842966194111233,
+        "rejected": 0.0,
+        "oov": 0.0,
+        "low_margin": 0.25081788440567065,
+        "few_terms": 0.10032715376226826
+    },
+    "numeric_statistics": {
+        "margin": {
+            "mean": 1.8409930526867595,
+            "median": 1.7853941807475553,
+            "p10": 0.2576947877584427,
+            "p90": 3.311995540144451
+        },
+        "active_terms": {
+            "mean": 27.85278080697928,
+            "median": 27.0
+        },
+        "words": {
+            "mean": 39.596510359869136,
+            "median": 38.0
+        }
+    },
+    "bins": {
+        "margin": [
+            -Infinity,
+            0.2576947877584427,
+            0.5878628753134129,
+            1.0187683627973156,
+            1.4171736577028227,
+            1.7853941807475553,
+            2.185392147858143,
+            2.599926014511434,
+            2.9426361748507213,
+            3.311995540144451,
+            Infinity
+        ],
+        "active_terms": [
+            -Infinity,
+            15.600000000000009,
+            20.0,
+            23.0,
+            26.0,
+            27.0,
+            30.0,
+            32.0,
+            36.0,
+            41.0,
+            Infinity
+        ],
+        "words": [
+            -Infinity,
+            27.0,
+            31.0,
+            34.0,
+            36.0,
+            38.0,
+            41.0,
+            44.0,
+            47.0,
+            53.39999999999998,
+            Infinity
+        ]
+    },
+    "model_sha256": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb"
+}

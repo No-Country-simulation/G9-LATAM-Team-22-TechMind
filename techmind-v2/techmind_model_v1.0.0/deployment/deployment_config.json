@@ -1,0 +1,39 @@
+{
+    "deployment_name": "TechMind Classification API",
+    "deployment_version": "1.0.0",
+    "package_version": "1.0.0",
+    "api_version": "1.0.0",
+    "container": {
+        "image_name": "techmind-api",
+        "image_tag": "1.0.0",
+        "image_reference": "techmind-api:1.0.0",
+        "internal_port": 8000,
+        "default_host": "127.0.0.1",
+        "default_host_port": 8000,
+        "base_image": "python:3.11-slim",
+        "application_user": "techmind",
+        "application_uid": 10001,
+        "workers": 1
+    },
+    "application": {
+        "module": "techmind_api.main:app",
+        "health_endpoint": "/health",
+        "prediction_endpoint": "/predict",
+        "documentation_endpoint": "/docs",
+        "package_root": "/app"
+    },
+    "security": {
+        "runs_as_non_root": true,
+        "read_only_filesystem_compose": true,
+        "drop_all_capabilities": true,
+        "no_new_privileges": true,
+        "external_binding_by_default": false,
+        "model_hash_verification": true
+    },
+    "operational_notes": [
+        "El margen del modelo no representa una probabilidad calibrada.",
+        "Se utiliza un worker para mantener una sola copia del modelo en memoria.",
+        "Para exposición externa deben añadirse autenticación, TLS y límites de solicitudes."
+    ],
+    "generated_at": "2026-08-05T19:52:54"
+}

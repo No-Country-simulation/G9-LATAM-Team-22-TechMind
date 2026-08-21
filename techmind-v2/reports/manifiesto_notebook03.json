@@ -1,0 +1,128 @@
+[
+    {
+        "Archivo": "techmind_modelo_final.joblib",
+        "Extension": ".joblib",
+        "Tamaño_KB": 2017.35,
+        "SHA256": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\models\\techmind_modelo_final.joblib"
+    },
+    {
+        "Archivo": "techmind_modelo_final_metadata.json",
+        "Extension": ".json",
+        "Tamaño_KB": 1.44,
+        "SHA256": "240d14eaf128fce2f8fb0fb19da9958dd693a75ac2984e20d9435aecdc610a6c",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\models\\techmind_modelo_final_metadata.json"
+    },
+    {
+        "Archivo": "metricas_finales_test.json",
+        "Extension": ".json",
+        "Tamaño_KB": 1.39,
+        "SHA256": "1a4f221ea0c2654220b5e4c838afb2f4976d29286f01edcc7f099fb7f2e08a71",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\metricas_finales_test.json"
+    },
+    {
+        "Archivo": "reporte_clasificacion_final.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.53,
+        "SHA256": "b3cdd8193978b4d1a64ae4cb713f6768a62276e091277939cfe6fb01d03618c7",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\reporte_clasificacion_final.csv"
+    },
+    {
+        "Archivo": "metricas_finales_por_categoria.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.32,
+        "SHA256": "73559194b0e4c27baac4e4977f53a1a41322e7a9fc3312b453b332ebd834d73f",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\metricas_finales_por_categoria.csv"
+    },
+    {
+        "Archivo": "matriz_confusion_final.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.16,
+        "SHA256": "7f482793dc79b5e8b38515251ca5cefe9470e97bef5b0211dce1c6f779d33406",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\matriz_confusion_final.csv"
+    },
+    {
+        "Archivo": "matriz_confusion_final_normalizada.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.41,
+        "SHA256": "15c325437ad008c90539e6ae58744fa761c132ec680033573ba308b7f43bd490",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\matriz_confusion_final_normalizada.csv"
+    },
+    {
+        "Archivo": "predicciones_test_final.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 286.56,
+        "SHA256": "a69af4e70c0d9de402e188ab55c625a5fcfc44f770592a1ebf9c084e22731645",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\predicciones_test_final.csv"
+    },
+    {
+        "Archivo": "errores_clasificacion_final.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 80.63,
+        "SHA256": "ebe55ba637f484fbfb633648c6e0bc5823b1fab6a2f6dcfc9964ac331db9c9ae",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\errores_clasificacion_final.csv"
+    },
+    {
+        "Archivo": "confusiones_frecuentes_final.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.33,
+        "SHA256": "e901ea4ad21bf0ea7a28fe6e831fb4f6eda5054f0c058108519d993665c63722",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\confusiones_frecuentes_final.csv"
+    },
+    {
+        "Archivo": "matriz_confusion_final.png",
+        "Extension": ".png",
+        "Tamaño_KB": 116.17,
+        "SHA256": "ef370755f7791cb138ba2f72ce7c6758bdfee2221fe40cc1ee10c9c60ae0a5ca",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\matriz_confusion_final.png"
+    },
+    {
+        "Archivo": "matriz_confusion_final_normalizada.png",
+        "Extension": ".png",
+        "Tamaño_KB": 135.2,
+        "SHA256": "fae061af28a286af8e8101f1ec55ce6919a9d4055cfe44f878d792e443f00c2f",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\matriz_confusion_final_normalizada.png"
+    },
+    {
+        "Archivo": "evolucion_f1_macro_notebook03.png",
+        "Extension": ".png",
+        "Tamaño_KB": 247.49,
+        "SHA256": "df3a1a837002d70bacd70823545e50a91e874a365fac2de93095a2e75d796d13",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\evolucion_f1_macro_notebook03.png"
+    },
+    {
+        "Archivo": "resumen_ejecutivo_notebook03.json",
+        "Extension": ".json",
+        "Tamaño_KB": 2.24,
+        "SHA256": "0745a8b282ebbcd388776e73c1670669fc1805c2461c56b9eae3128cac3c35f2",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\reports\\resumen_ejecutivo_notebook03.json"
+    },
+    {
+        "Archivo": "resumen_ejecutivo_notebook03.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.53,
+        "SHA256": "5d31d34f4f4a5ee2a68cd04f52594b64caa801b275c1c9a20a4ec2f293d174a2",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\resumen_ejecutivo_notebook03.csv"
+    },
+    {
+        "Archivo": "evolucion_modelado_notebook03.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.93,
+        "SHA256": "a884510d26f343167f61bb6b190bbd6a5ab296576bfd749c8c9ea05619566046",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\evolucion_modelado_notebook03.csv"
+    },
+    {
+        "Archivo": "resumen_categorias_notebook03.csv",
+        "Extension": ".csv",
+        "Tamaño_KB": 0.3,
+        "SHA256": "91c438a731b84d086b387769c99d46a9575095c2527a0a8f52077dae3edc10da",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\results\\resumen_categorias_notebook03.csv"
+    },
+    {
+        "Archivo": "resumen_notebook03.md",
+        "Extension": ".md",
+        "Tamaño_KB": 1.73,
+        "SHA256": "edc226cba0b775285fa7b42ca1d27b0c2d89eca9e7022d4bb0b2ffceb9e06cfe",
+        "Ruta": "C:\\Users\\MAMÁ\\Downloads\\reports\\resumen_notebook03.md"
+    }
+]

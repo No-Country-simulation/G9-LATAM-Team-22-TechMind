@@ -1,0 +1,49 @@
+{
+  "version": "1.1.0",
+  "status": "Modelo final evaluado y aprobado",
+  "model_name": "TF-IDF Word + Char 3-6 + SGDClassifier optimizado",
+  "architecture": {
+    "word_tfidf": true,
+    "char_tfidf": true,
+    "char_analyzer": "char_wb",
+    "char_ngram_range": [
+      3,
+      6
+    ],
+    "stopwords_spanish": true,
+    "strip_accents": "unicode",
+    "classifier": "SGDClassifier",
+    "alpha": 0.00024
+  },
+  "classes": [
+    "backend",
+    "cloud",
+    "datascience",
+    "frontend"
+  ],
+  "training_documents": 3666,
+  "test_documents": 917,
+  "metrics": {
+    "version": "1.1.0",
+    "model_name": "TF-IDF Word + Char 3-6 + SGDClassifier optimizado",
+    "test_documents": 917,
+    "accuracy": 0.8429661941112323,
+    "precision_macro": 0.845460401784403,
+    "recall_macro": 0.843434838618537,
+    "f1_macro": 0.8441087742017592,
+    "f1_weighted": 0.8434532240473854,
+    "f1_macro_cv": 0.8492810130801954,
+    "test_cv_difference": -0.005172238878436208,
+    "review_rate": 0.2682660850599782,
+    "accepted_accuracy": 0.9508196721311475,
+    "error_capture_rate": 0.7708333333333334,
+    "documents_without_coverage": 0,
+    "approved": true
+  },
+  "operational_thresholds": {
+    "review_margin": 0.64346894252355,
+    "few_features": 178,
+    "reject_if_total_features": 0
+  },
+  "sha256": "756b2577e731336ead95852ee1d8d752408762478a23d0bbf42cc9537e136ff6"
+}

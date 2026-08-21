@@ -1,0 +1,22 @@
+{
+    "valid_texts": [
+        "java spring boot rest api microservices postgresql backend architecture",
+        "aws kubernetes terraform docker cloud infrastructure deployment",
+        "python pandas scikit-learn machine learning dataset predictive model",
+        "react javascript html css responsive frontend interface"
+    ],
+    "expected_predictions": [
+        "backend",
+        "cloud",
+        "datascience",
+        "frontend"
+    ],
+    "oov_text": "zzzxqvvv pppqqqxxx nnnyyywww",
+    "expected_classes": [
+        "backend",
+        "cloud",
+        "datascience",
+        "frontend"
+    ],
+    "expected_tfidf_features": 30000
+}

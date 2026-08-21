@@ -1,0 +1,125 @@
+{
+    "proyecto": "TechMind v2.0",
+    "fecha_generacion": "2026-08-05T19:47:28",
+    "modelo": "TF-IDF + SGDClassifier optimizado",
+    "clasificador": "SGDClassifier",
+    "numero_categorias": 4,
+    "categorias": [
+        "backend",
+        "cloud",
+        "datascience",
+        "frontend"
+    ],
+    "numero_caracteristicas_tfidf": 30000,
+    "numero_coeficientes": 120000,
+    "top_terminos_por_categoria": 25,
+    "terminos_compartidos_top_positivos": 0,
+    "terminos_potencialmente_ruidosos_top_500": 7,
+    "interceptos": {
+        "backend": -0.7889802164351708,
+        "cloud": -0.7587329513838929,
+        "datascience": -0.8543819939570603,
+        "frontend": -0.4451063611691545
+    },
+    "terminos_positivos_principales": {
+        "backend": [
+            "backend",
+            "go",
+            "fastapi",
+            "http",
+            "spring",
+            "php",
+            "nestjs",
+            "api",
+            "database",
+            "webhook"
+        ],
+        "cloud": [
+            "cloud",
+            "aws",
+            "azure",
+            "kubernetes",
+            "devops",
+            "infrastructure",
+            "terraform",
+            "hosting",
+            "claude",
+            "costs"
+        ],
+        "datascience": [
+            "data",
+            "bi",
+            "python",
+            "csv",
+            "backtest",
+            "science",
+            "data science",
+            "prediction",
+            "machine learning",
+            "excel"
+        ],
+        "frontend": [
+            "frontend",
+            "react",
+            "css",
+            "javascript",
+            "ui",
+            "angular",
+            "web",
+            "html",
+            "front-end",
+            "building"
+        ]
+    },
+    "terminos_negativos_principales": {
+        "backend": [
+            "cloud",
+            "frontend",
+            "react",
+            "aws",
+            "data",
+            "css",
+            "kubernetes",
+            "angular",
+            "my software",
+            "azure"
+        ],
+        "cloud": [
+            "frontend",
+            "backend",
+            "building a",
+            "building",
+            "pocketbase",
+            "ui",
+            "data",
+            "react",
+            "go",
+            "css"
+        ],
+        "datascience": [
+            "cloud",
+            "javascript",
+            "backend",
+            "aws",
+            "frontend",
+            "css",
+            "saas",
+            "real-time",
+            "security",
+            "react"
+        ],
+        "frontend": [
+            "cloud",
+            "backend",
+            "go",
+            "aws",
+            "python",
+            "data",
+            "ai",
+            "php",
+            "sql",
+            "llm"
+        ]
+    },
+    "advertencia_interpretacion": "Los coeficientes representan asociaciones predictivas del modelo y no relaciones causales."
+}

@@ -1,0 +1,47 @@
+{
+  "model_version": "1.1.0",
+  "architecture": "TF-IDF Word + Char 3-6 + SGDClassifier",
+  "margin_is_probability": false,
+  "margin_thresholds": {
+    "review": 0.64346894252355,
+    "p10": 0.25069918298912164,
+    "p25": 0.6753474254201497,
+    "p50": 1.4896972811173064,
+    "p90": 2.91889408125449
+  },
+  "coverage": {
+    "reject_if_total_features": 0,
+    "few_features_threshold": 178,
+    "uses_word_features": true,
+    "uses_char_features": true
+  },
+  "operational_states": [
+    "aceptada",
+    "revision",
+    "rechazada"
+  ],
+  "calibration": {
+    "method": "5-fold out-of-fold predictions",
+    "documents": 3666,
+    "accuracy_oof": 0.8483360611020185,
+    "f1_macro_oof": 0.8491950716967139,
+    "accepted_accuracy": 0.9417731029301277,
+    "error_capture_rate": 0.7212230215827338
+  },
+  "interface_version": "1.0.0",
+  "limits": {
+    "max_batch_size": 500,
+    "max_characters_per_document": 50000
+  },
+  "operational": {
+    "states": [
+      "aceptada",
+      "revision",
+      "rechazada"
+    ],
+    "review_margin": 0.64346894252355,
+    "few_features_threshold": 178,
+    "reject_if_total_features": 0,
+    "coverage_definition": "word_features + char_features"
+  }
+}

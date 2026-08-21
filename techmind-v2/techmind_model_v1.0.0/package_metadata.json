@@ -1,0 +1,182 @@
+{
+    "package_name": "techmind-model",
+    "package_version": "1.0.0",
+    "project": "TechMind v2.0",
+    "generated_at": "2026-08-05T19:48:04",
+    "model": {
+        "name": "TF-IDF + SGDClassifier optimizado",
+        "status": "Modelo final evaluado",
+        "sha256": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb",
+        "classes": [
+            "backend",
+            "cloud",
+            "datascience",
+            "frontend"
+        ],
+        "tfidf_features": 30000,
+        "pipeline_steps": [
+            "tfidf",
+            "clasificador"
+        ]
+    },
+    "test_metrics": {
+        "accuracy": 0.8386041439476554,
+        "precision_macro": 0.8444900965351991,
+        "recall_macro": 0.838527469829268,
+        "f1_macro": 0.8401134859255158,
+        "f1_weighted": 0.8396773972801306
+    },
+    "inference": {
+        "interface_version": "1.0.0",
+        "maximum_batch_size": 500,
+        "rejects_empty_inputs": true,
+        "rejects_unknown_vocabulary": true,
+        "optional_explanations": true,
+        "margin_is_probability": false
+    },
+    "validation": {
+        "source_model_hash_matches": true,
+        "module_syntax_valid": true,
+        "subprocess_smoke_test": true,
+        "dynamic_import_test": true
+    },
+    "environment": {
+        "python": "3.11.9",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "architecture": [
+            "64bit",
+            "WindowsPE"
+        ],
+        "packages": {
+            "numpy": "1.26.4",
+            "scipy": "1.17.1",
+            "scikit_learn": "1.9.0",
+            "joblib": "1.5.3"
+        },
+        "generated_at": "2026-08-05T19:47:49"
+    },
+    "optional_artifacts": [
+        "resumen_analisis_margen.json",
+        "resumen_explicabilidad_global.json",
+        "resumen_pruebas_robustez.json"
+    ],
+    "api": {
+        "name": "TechMind Classification API",
+        "version": "1.0.0",
+        "framework": "FastAPI 0.141.1",
+        "pydantic": "2.13.4",
+        "endpoints": {
+            "root": "/",
+            "health": "/health",
+            "model_info": "/model-info",
+            "predict": "/predict",
+            "swagger": "/docs",
+            "redoc": "/redoc",
+            "openapi": "/openapi.json"
+        },
+        "validation": {
+            "local_testclient": true,
+            "subprocess_smoke_test": true,
+            "oov_rejected": true,
+            "invalid_requests_return_422": true
+        },
+        "security_defaults": {
+            "bind_host": "127.0.0.1",
+            "external_cors_origins": [],
+            "model_hash_verification": true
+        },
+        "margin_is_probability": false,
+        "generated_at": "2026-08-05T19:48:13"
+    },
+    "deployment": {
+        "deployment_version": "1.0.0",
+        "container_image": "techmind-api:1.0.0",
+        "base_image": "python:3.11-slim",
+        "internal_port": 8000,
+        "default_host_binding": "127.0.0.1",
+        "runs_as_non_root": true,
+        "read_only_filesystem": true,
+        "healthcheck": "/health",
+        "static_validation": {
+            "dockerfile": true,
+            "compose": true,
+            "dockerignore": true
+        },
+        "docker_runtime": {
+            "status": "not_available",
+            "build_approved": null,
+            "health_approved": false,
+            "prediction_approved": false
+        },
+        "generated_at": "2026-08-05T19:58:44"
+    },
+    "monitoring": {
+        "monitoring_version": "1.0.0",
+        "reference_documents": 917,
+        "reference_profile": "monitoring/config/reference_profile.json",
+        "event_log": "monitoring/logs/monitoring_events.jsonl",
+        "monitored_metrics": [
+            "accepted_rate",
+            "review_rate",
+            "rejection_rate",
+            "oov_rate",
+            "low_margin_rate",
+            "mean_margin",
+            "mean_active_terms",
+            "mean_words",
+            "category_distribution",
+            "status_distribution"
+        ],
+        "drift_metrics": [
+            "category_jsd",
+            "status_jsd",
+            "margin_psi",
+            "active_terms_psi",
+            "words_psi"
+        ],
+        "test_batches": {
+            "lote_estable": {
+                "status": "warning",
+                "documents": 200,
+                "alerts": 2
+            },
+            "lote_cambio_tematico": {
+                "status": "critical",
+                "documents": 140,
+                "alerts": 6
+            },
+            "lote_ruido_oov": {
+                "status": "critical",
+                "documents": 90,
+                "alerts": 8
+            }
+        },
+        "model_sha256": "488ec7d47f7697f870fde6877d8df54e5ce1fedbc29842dd669a1014c7715cfb",
+        "generated_at": "2026-08-06T04:27:59+00:00"
+    },
+    "final_report": {
+        "version": "1.0.0",
+        "status": "approved",
+        "report_markdown": "FINAL_REPORT.md",
+        "report_json": "reports/final/techmind_final_report.json",
+        "validation_json": "reports/final/techmind_final_validation.json",
+        "metrics": {
+            "accuracy_test": 0.8386041439476554,
+            "precision_macro_test": 0.8444900965351991,
+            "recall_macro_test": 0.838527469829268,
+            "f1_macro_test": 0.8401134859255158,
+            "f1_weighted_test": 0.8396773972801306,
+            "f1_macro_cv": 0.8432,
+            "test_cv_difference": -0.0030865140744841257
+        },
+        "audit": {
+            "approved_controls": 14,
+            "total_controls": 14,
+            "approved_components": 16,
+            "total_components": 16
+        },
+        "model_integrity": true,
+        "generated_at": "2026-08-06T04:45:02+00:00"
+    }
+}
