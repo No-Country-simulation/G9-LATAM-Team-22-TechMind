@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: indexmind-backend:1.2
+    container_name: backend-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-v12}
+      DS_MODELO_BASE_URL: http://modelo-ds:8000
+    depends_on:
+      - modelo-ds
+    networks:
+      - techmind-net
+    restart: unless-stopped
+
+  modelo-ds:
+    build:
+      context: ./modelo-ds/techmind-v1.2-multilingual
+      dockerfile: deploy/v1.2.0-multilingual/docker/Dockerfile
+    image: techmind:v1.2.0-multilingual
+    container_name: modelo-ds
+    ports:
+      - "8000:8000"
+    environment:
+      TECHMIND_V12_MODEL_PATH: /app/models/experimental/v1.2.0-multilingual/techmind_hybrid_v1_2_0_multilingual.joblib
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      TOKENIZERS_PARALLELISM: "false"
+    networks:
+      - techmind-net
+    restart: unless-stopped
+    init: true
+
+networks:
+  techmind-net:
+    driver: bridge
